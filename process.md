@@ -31,13 +31,15 @@ Route                    | Method   | Beschreibung       | Beispiel-Body        
 -------------------------|----------| ------------------ | ----------------------------------------------------| 
 /api/code/{codeID}/files | POST     | Dateien senden     | ```{ "files": [] } ```                              |
 /api/code/{codeID}/text  | POST     | Text senden        | ```{"text": "This is a example text to send :)"} ```|
-/api/code/generate       | WS       | Event um einen Code zu bekommen | empty body                             |
 
 # Websocket-Api-Aufbau
 Event             | Method  | Beschreibung                                  | Beispiel-Body |
 ------------------|---------|---------------------------------------------- | --------------| 
 code/generate     | SEND    |Event zum Anfragen eines Send-Codes            | empty body    |
-code/generate     | RECEIVE |Event um den Angefragten Code zu empfangen     | empty body    |
+code/generate     | RECEIVE |Event um den Angefragten Code zu empfangen     | ``` {"code":"1234567890", "jwt":"thisIsAValidJWT"} ```    |
+code/login        | SEND    | Event um sich anzumelden, wenn ein jwt existiert   | ``` {"jwt":"thisIsAValidJWT"} ```    |
+code/login        | RECEIVE |Event den Status des logins zu bekommen    |``` {"success":false} ```    |
+
 code/check        | SEND    |Event um zu überprüfen, ob der eingegebene Code online ist      | ``` {"code": "1234567890"} ```   |
 code/check        | RECEIVE    |Event um die Validierungs Info des angefragten codes zu halten     | ``` {"code": "1234567890", "valid": "true|false"} ```   |
 code/files        | RECEIVE |Event um die Info über eine erhaltende Datei   | ```{"files": [{"fileID": "uuid", "storageType": "s3|local", "domain": "s3.mycoding.systems|sdf.mycoding.systems", "fileUrl": "/sdf/public/{uuid}|/upload/{fileID}"}]} ```
