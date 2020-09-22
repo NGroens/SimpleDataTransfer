@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/process.md" beforeDir="false" afterPath="$PROJECT_DIR$/process.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +13,7 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sdt-server" />
   </component>
   <component name="ProjectId" id="1hPreYEyyONEDipEv8KYOiXBIUf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,7 +37,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="D:\Development\Github\SimpleDataTransfer\sdt-frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="N:\Grönsfelder IT Solutions\SimpleDataTransfer\sdt-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -107,6 +106,7 @@
       <workItem from="1600533630338" duration="772000" />
       <workItem from="1600692472112" duration="1305000" />
       <workItem from="1600759305448" duration="2873000" />
+      <workItem from="1600789686210" duration="3710000" />
     </task>
     <servers />
   </component>
@@ -122,5 +122,13 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="622" y="178" key="NewModule_or_Project.wizard/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1599923727298" />
+    <state x="1937" y="40" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1600796327789">
+      <screen x="1920" y="40" width="1920" height="1040" />
+    </state>
+    <state x="1937" y="40" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1600796327789" />
+    <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="539" y="404" width="1541" height="668" key="dock-window-2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1600798353023" />
   </component>
 </project>
