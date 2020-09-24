@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CodeController } from './api/code/code.controller';
-import { CodeModule } from './api/code/code.module';
+import { CodeController } from './api/rest/code/code.controller';
+import { CodeModule } from './api/rest/code/code.module';
 
 @Module({
   imports: [CodeModule],
