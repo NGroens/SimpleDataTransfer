@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CodeController } from './code.controller';
-import { CodeService } from './code.service';
+import { CodeController } from './code/code.controller';
+import { CodeService } from './code/code.service';
 
 
 @Module({
@@ -8,4 +8,4 @@ import { CodeService } from './code.service';
     controllers: [CodeController],
     providers: [CodeService],
 })
-export class CodeModule {}
+export class RestModule {}

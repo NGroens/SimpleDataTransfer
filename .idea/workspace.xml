@@ -13,7 +13,7 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sdt-server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1hPreYEyyONEDipEv8KYOiXBIUf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -37,10 +37,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="N:\Grönsfelder IT Solutions\SimpleDataTransfer\sdt-frontend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Development\Github\SimpleDataTransfer\sdt-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Github\SimpleDataTransfer\sdt-server\src\api\rest" />
       <recent name="N:\Grönsfelder IT Solutions\SimpleDataTransfer\sdt-server\src\api\web" />
       <recent name="N:\Grönsfelder IT Solutions\SimpleDataTransfer\sdt-server\src" />
       <recent name="D:\Development\Github\SimpleDataTransfer\sdt-server\src\api" />
@@ -111,6 +112,8 @@
       <workItem from="1600789686210" duration="3710000" />
       <workItem from="1600868035509" duration="587000" />
       <workItem from="1600948874643" duration="1032000" />
+      <workItem from="1600953904303" duration="2187000" />
+      <workItem from="1600957039466" duration="341000" />
     </task>
     <servers />
   </component>
@@ -122,6 +125,22 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="740" y="269" key="FileChooserDialogImpl/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1599923721920" />
+    <state width="1326" height="227" key="GridCell.Tab.0.bottom" timestamp="1600954736295">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
+    <state width="1326" height="227" key="GridCell.Tab.0.center" timestamp="1600954736294">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1326" height="227" key="GridCell.Tab.0.center/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
+    <state width="1326" height="227" key="GridCell.Tab.0.left" timestamp="1600954736294">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1326" height="227" key="GridCell.Tab.0.left/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
+    <state width="1326" height="227" key="GridCell.Tab.0.right" timestamp="1600954736295">
+      <screen x="0" y="40" width="1368" height="872" />
+    </state>
+    <state width="1326" height="227" key="GridCell.Tab.0.right/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
     <state x="622" y="178" key="NewModule_or_Project.wizard" timestamp="1599923727298">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>

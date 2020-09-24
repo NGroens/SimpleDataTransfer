@@ -39,8 +39,7 @@ code/generate     | SEND    |Event zum Anfragen eines Send-Codes            | em
 code/generate     | RECEIVE |Event um den Angefragten Code zu empfangen     | ``` {"code":"1234567890", "jwt":"thisIsAValidJWT"} ```    |
 code/login        | SEND    | Event um sich anzumelden, wenn ein jwt existiert   | ``` {"jwt":"thisIsAValidJWT"} ```    |
 code/login        | RECEIVE |Event den Status des logins zu bekommen    |``` {"success":false} ```    |
-
 code/check        | SEND    |Event um zu überprüfen, ob der eingegebene Code online ist      | ``` {"code": "1234567890"} ```   |
 code/check        | RECEIVE    |Event um die Validierungs Info des angefragten codes zu halten     | ``` {"code": "1234567890", "valid": "true|false"} ```   |
-code/files        | RECEIVE |Event um die Info über eine erhaltende Datei   | ```{"files": [{"fileID": "uuid", "storageType": "s3|local", "domain": "s3.mycoding.systems|sdf.mycoding.systems", "fileUrl": "/sdf/public/{uuid}|/upload/{fileID}"}]} ```
-code/text       | RECEIVE |Event um gesendeten Text zu erhalten           | ```{"text": "This is a example text to send :)"} ```
+code/files        | RECEIVE |Event um die Info über eine erhaltende Datei   | ```{"files": [{"fileID": "uuid", "storageType": "s3|local", "domain": "s3.mycoding.systems|sdf.mycoding.systems", "fileUrl": "/sdf/public/{uuid}|/upload/{fileID}"}]} ``` |
+code/text         | RECEIVE |Event um gesendeten Text zu erhalten           | ```{"text": "This is a example text to send :)"} ``` | 
