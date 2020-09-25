@@ -13,7 +13,7 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sdt-server" />
   </component>
   <component name="ProjectId" id="1hPreYEyyONEDipEv8KYOiXBIUf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -122,6 +122,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601063221992">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601063221992" />
     <state x="740" y="269" key="FileChooserDialogImpl" timestamp="1599923721920">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
