@@ -9,8 +9,8 @@ import { DatabaseModule } from './database/database.module';
 
 @Module({
     imports: [
-        SchemaModule,
         DatabaseModule,
+        SchemaModule,
         ApiModule,
         ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     ],
