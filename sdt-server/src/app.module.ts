@@ -7,7 +7,9 @@ import * as path from 'path';
 import { SchemaModule } from './schemas/schema.module';
 import { DatabaseModule } from './database/database.module';
 import { SecurityModule } from './security/security.module';
+import { UtilsService } from './utils/utils.service';
 
+@Global()
 @Module({
     imports: [
         DatabaseModule,
@@ -17,7 +19,8 @@ import { SecurityModule } from './security/security.module';
         ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService, UtilsService],
+    exports: [UtilsService]
 })
 export class AppModule {
 }

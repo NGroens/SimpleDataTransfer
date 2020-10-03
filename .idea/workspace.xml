@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-database/docker-compose-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-database/docker-compose-dev.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,7 @@
       <workItem from="1601629795742" duration="749000" />
       <workItem from="1601630917684" duration="2693000" />
       <workItem from="1601715481781" duration="6526000" />
-      <workItem from="1601743035760" duration="1498000" />
+      <workItem from="1601743035760" duration="8843000" />
     </task>
     <servers />
   </component>
@@ -166,10 +165,14 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="461" y="205" key="SettingsEditor/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601632089805" />
-    <state x="1937" y="40" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601744639903">
+    <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601753729195">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601753729195" />
+    <state x="1820" y="-25" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601748767646">
       <screen x="1920" y="40" width="1920" height="1040" />
     </state>
-    <state x="1937" y="40" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601744639903" />
+    <state x="1820" y="-25" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601748767646" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
