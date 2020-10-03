@@ -6,6 +6,7 @@ import { Code } from '../../schemas/code.schema';
 import { Model } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { UtilsService } from '../../utils/utils.service';
+import { LoginWithCodeDto } from '../../utils/code/loginWithCode.dto';
 
 @WebSocketGateway()
 export class CodeGateway {
@@ -26,7 +27,9 @@ export class CodeGateway {
         const code = this.utilsService.generateCode(10);
         console.log(code);
         const newCode = new this.codeModel({
-            code: code
+            code: code,
+            files: [],
+            texts: []
         });
         let returnValue = { event: 'code/generate', data: { success: false } };
         await newCode.save()
@@ -46,8 +49,19 @@ export class CodeGateway {
     }
 
     @SubscribeMessage('code/login')
-    handleLogin(client: Socket, data: string): WsResponse<any> {
-        return { event: 'changeMe', data: data };
+    async handleLogin(client: Socket, data: LoginWithCodeDto): Promise<WsResponse<any>> {
+        const payload = this.jwtService.decode(data.jwt);
+        if (!payload) {
+            return { event: 'code/login', data: { success: false } };
+        }
+        const requestedCode = await this.findByCode(payload['code']);
+        if (!requestedCode) {
+            return { event: 'code/login', data: { success: false } };
+        }
+        console.log(requestedCode);
+        const jwt_payload = { _id: requestedCode._id, code: requestedCode.code };
+        const jwt = { success: true, token: this.jwtService.sign(jwt_payload), code: requestedCode.code };
+        return { event: 'code/login', data: jwt };
     }
 
     @SubscribeMessage('code/check')
@@ -57,7 +71,7 @@ export class CodeGateway {
     }
 
     async findByCode(code): Promise<Code> {
-        const savedCode = await this.codeModel.findById(code).exec();
+        const savedCode = await this.codeModel.findOne({ code: code }).exec();
 
         return savedCode;
     }

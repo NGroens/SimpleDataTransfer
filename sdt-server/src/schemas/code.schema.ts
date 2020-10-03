@@ -1,5 +1,6 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import * as module from 'module';
 
 /**
  Json-Object
@@ -14,12 +15,14 @@ import { Document } from 'mongoose';
     ]
  }
  **/
+//TODO add createdAt field
 @Schema()
 export class Code extends Document {
     @Prop({
         required: 'Code isn\'t provided.',
-        unique: true
-
+        index: {
+            unique: true
+        }
     })
     code: string;
 
