@@ -1,7 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { WebsocketService } from '../../ws/websocket.service';
+import { CodeManagerService } from '../../code-manager.service';
+import { SendTextDto } from '../../../utils/code/sendText.dto';
 
 @Injectable()
 export class CodeService {
+    constructor(
+        private websocketService: WebsocketService,
+        private codeManagerService: CodeManagerService
+    ) {
+    }
+
     getHello(): string {
         return 'Hello World!';
     }
@@ -18,7 +27,19 @@ export class CodeService {
         return 'upload successful!';
     }
 
-    sendText(code: any, body: any) {
-        return body;
+    async sendText(code: any, sendTextDto: SendTextDto) {
+        const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
+        console.log(sendTextDto);
+        if(!sendTextDto['text']){
+            throw new HttpException('Empty body', HttpStatus.BAD_REQUEST)
+        }
+
+        if (!isOnline) {
+            throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
+        }
+
+
+        return await this.codeManagerService.addTextToCode(code, sendTextDto['text']);
+
     }
 }

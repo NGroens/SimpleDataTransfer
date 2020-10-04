@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { CodeService } from './code.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { SendTextDto } from '../../../utils/code/sendText.dto';
 
 @Controller('/api')
 export class CodeController {
@@ -29,11 +30,11 @@ export class CodeController {
      * Handle text send
      * @description Send text to CodeService function
      * @param code
-     * @param files
+     * @param sendTextDto
      */
     @Post('/code/:code/text')
-    sendText(@Param('code') code, @Body() body): string {
-        console.log(body)
-        return this.codeService.sendText(code, body);
+    async sendText( @Param('code') code, @Body() sendTextDto: SendTextDto): Promise<string> {
+        console.log(code);
+        return JSON.stringify({ success: await this.codeService.sendText(code, sendTextDto) });
     }
 }

@@ -1,6 +1,5 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import * as module from 'module';
 
 /**
  Json-Object
@@ -33,12 +32,11 @@ export class Code extends Document {
             domain: { type: String },
             fileUrl: { type: String },
             date: { type: String }
-        }
-    ))
+        })
+    )
     files: Record<string, any>[];
     @Prop(raw(
         {
-            textID: { type: String, unique: true },
             text: { type: String },
             date: { type: String }
         }

@@ -1,4 +1,4 @@
-import { SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse, } from '@nestjs/websockets';
+import { OnGatewayInit, SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse, } from '@nestjs/websockets';
 import { Server } from 'ws';
 import { Socket } from 'socket.io';
 import { InjectModel } from '@nestjs/mongoose';
@@ -7,19 +7,27 @@ import { Model } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { UtilsService } from '../../utils/utils.service';
 import { LoginWithCodeDto } from '../../utils/code/loginWithCode.dto';
+import { WebsocketService } from './websocket.service';
+import { CodeManagerService } from '../code-manager.service';
 
 @WebSocketGateway()
-export class CodeGateway {
+export class CodeGateway implements OnGatewayInit {
 
     constructor(
         @InjectModel(Code.name) private codeModel: Model<Code>,
         private jwtService: JwtService,
-        private utilsService: UtilsService
+        private utilsService: UtilsService,
+        private websocketService: WebsocketService,
+        private codeManagerService: CodeManagerService
     ) {
     }
 
     @WebSocketServer()
     server: Server;
+
+    afterInit(server: Server) {
+        this.websocketService.setSocketServer(server);
+    }
 
     @SubscribeMessage('code/generate')
     async handleGeneration(client: Socket, data: string): Promise<WsResponse<any>> {
@@ -37,7 +45,6 @@ export class CodeGateway {
                 const payload = { _id: code._id, code: code.code };
                 const jwt = { event: 'code/generate', data: { success: true, token: this.jwtService.sign(payload), code: newCode.code } };
                 client.join('code/' + newCode.code);
-
                 returnValue = jwt;
             })
             .catch((error) => {
@@ -46,7 +53,6 @@ export class CodeGateway {
                 }
                 returnValue = { event: 'code/generate', data: { success: false } };
             });
-
         return returnValue;
     }
 
@@ -56,7 +62,7 @@ export class CodeGateway {
         if (!payload) {
             return { event: 'code/login', data: { success: false } };
         }
-        const requestedCode = await this.findByCode(payload['code']);
+        const requestedCode = await this.codeManagerService.findByCode(payload['code']);
         if (!requestedCode) {
             return { event: 'code/login', data: { success: false } };
         }
@@ -69,8 +75,8 @@ export class CodeGateway {
 
     @SubscribeMessage('code/check')
     async handleCheck(client: Socket, data: any): Promise<WsResponse<any>> {
-        const requestedCode = await this.findByCode(data['code']);
-
+        const requestedCode = await this.codeManagerService.findByCode(data['code']);
+        //TODO user userIsOnlineByCode function
         if (!requestedCode) {
             return { event: 'code/check', data: { success: false, code: data['code'] } };
 
@@ -86,9 +92,5 @@ export class CodeGateway {
 
     }
 
-    async findByCode(code): Promise<Code> {
-        const savedCode = await this.codeModel.findOne({ code: code }).exec();
 
-        return savedCode;
-    }
 }
