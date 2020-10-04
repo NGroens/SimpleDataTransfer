@@ -36,6 +36,8 @@ export class CodeGateway {
             .then((code: Code) => {
                 const payload = { _id: code._id, code: code.code };
                 const jwt = { event: 'code/generate', data: { success: true, token: this.jwtService.sign(payload), code: newCode.code } };
+                client.join('code/' + newCode.code);
+
                 returnValue = jwt;
             })
             .catch((error) => {
@@ -61,13 +63,27 @@ export class CodeGateway {
         console.log(requestedCode);
         const jwt_payload = { _id: requestedCode._id, code: requestedCode.code };
         const jwt = { success: true, token: this.jwtService.sign(jwt_payload), code: requestedCode.code };
+        client.join('code/' + requestedCode.code);
         return { event: 'code/login', data: jwt };
     }
 
     @SubscribeMessage('code/check')
-    handleCheck(client: Socket, data: string): WsResponse<any> {
+    async handleCheck(client: Socket, data: any): Promise<WsResponse<any>> {
+        const requestedCode = await this.findByCode(data['code']);
 
-        return { event: 'changeME', data: data };
+        if (!requestedCode) {
+            return { event: 'code/check', data: { success: false, code: data['code'] } };
+
+        }
+        await this.server.of('/').adapter.clients(['code/' + data['code']], (err, clients) => {
+            console.log(clients.length);
+            if (clients.length > 0) {
+                client.emit('code/check', { success: true, code: data['code'] });
+            } else {
+                client.emit('code/check', { success: false, code: data['code'] });
+            }
+        });
+
     }
 
     async findByCode(code): Promise<Code> {

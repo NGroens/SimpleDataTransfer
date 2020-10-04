@@ -43,3 +43,4 @@ code/check        | SEND    |Event um zu überprüfen, ob der eingegebene Code o
 code/check        | RECEIVE    |Event um die Validierungs Info des angefragten codes zu halten     | ``` {"code": "1234567890", "valid": "true/false"} ```   |
 code/files        | RECEIVE |Event um die Info über eine erhaltende Datei   | ``` {"files": [{"fileID": "uuid", "storageType": "s3 / local", "domain": "s3.mycoding.systems-sdf.mycoding.systems", "fileUrl": "/sdf/public/{uuid} - /upload/{fileID}"}]} ```|
 code/text         | RECEIVE |Event um gesendeten Text zu erhalten           | ```{"text": "This is a example text to send :)"} ``` | 
+code/{code}       | RECEIVE | Event um zu überprüfen, ob ein user online ist | ``` {"code": "1234567890"} ```| 
