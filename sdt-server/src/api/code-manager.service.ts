@@ -35,17 +35,20 @@ export class CodeManagerService {
         });
     }
 
-    async addTextToCode(code, text): Promise<boolean> {
+    async addTextToCode(code, sendTextDto): Promise<boolean> {
         const requtestedCode = await this.findByCode(code);
         if (!requtestedCode) {
             return Promise.resolve(false);
         }
-        if(!requtestedCode.texts){
-            requtestedCode['texts'] = [];
+        console.log(requtestedCode.texts);
+        if (requtestedCode.texts.length <= 0) {
+            console.log('moin moi');
+            requtestedCode.texts = [];
         }
-        console.log(requtestedCode)
+        console.log(requtestedCode.texts.length);
         requtestedCode.texts.push({
-            text: text,
+            title: sendTextDto.title,
+            text: sendTextDto.text,
             date: Math.floor(Date.now() / 1000)
         });
 

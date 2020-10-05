@@ -25,23 +25,29 @@ export class Code extends Document {
     })
     code: string;
 
-    @Prop(raw(
-        {
-            fileID: { type: String, unique: true },
-            storageType: { type: String, enum: ['s3', 'local'] },
-            domain: { type: String },
-            fileUrl: { type: String },
-            date: { type: String }
-        })
+    @Prop(raw([
+            {
+                fileID: { type: String, unique: true },
+                storageType: { type: String, enum: ['s3', 'local'] },
+                domain: { type: String },
+                fileUrl: { type: String },
+                date: { type: String, default: Date.now }
+            }
+        ])
     )
     files: Record<string, any>[];
-    @Prop(raw(
+    @Prop(raw([
         {
+            title: { type: String},
             text: { type: String },
-            date: { type: String }
+            date: { type: String, default: Date.now }
         }
-    ))
+    ]))
     texts: Record<string, any>[];
+    @Prop({
+        default: Date.now
+    })
+    createdAt: string;
 
 }
 

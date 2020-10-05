@@ -129,6 +129,7 @@
       <workItem from="1601761953794" duration="595000" />
       <workItem from="1601806865995" duration="13983000" />
       <workItem from="1601828745914" duration="3262000" />
+      <workItem from="1601894211514" duration="8711000" />
     </task>
     <servers />
   </component>
@@ -172,13 +173,28 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601830120906" />
-    <state x="1912" y="32" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601828754687">
+    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601919667910">
       <screen x="1920" y="40" width="1920" height="1040" />
     </state>
-    <state x="1912" y="32" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601828754687" />
+    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601919667910" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="539" y="404" width="1541" height="668" key="dock-window-2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1600798353023" />
+    <state x="623" y="265" key="search.everywhere.popup" timestamp="1601913407291">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="623" y="265" key="search.everywhere.popup/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601913407291" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/sdt-server/src/utils/code/sendText.dto.ts</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

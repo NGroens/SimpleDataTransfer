@@ -29,17 +29,12 @@ export class CodeService {
 
     async sendText(code: any, sendTextDto: SendTextDto) {
         const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
-        console.log(sendTextDto);
-        if(!sendTextDto['text']){
-            throw new HttpException('Empty body', HttpStatus.BAD_REQUEST)
+        if (!sendTextDto['text'] || !sendTextDto['title']) {
+            throw new HttpException('Empty body', HttpStatus.BAD_REQUEST);
         }
-
         if (!isOnline) {
             throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
         }
-
-
-        return await this.codeManagerService.addTextToCode(code, sendTextDto['text']);
-
+        return await this.codeManagerService.addTextToCode(code, sendTextDto);
     }
 }

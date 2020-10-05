@@ -1,11 +1,15 @@
-import { Body, Controller, Get, Param, Post, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { CodeService } from './code.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { SendTextDto } from '../../../utils/code/sendText.dto';
+import { WebsocketService } from '../../ws/websocket.service';
 
 @Controller('/api')
 export class CodeController {
-    constructor(private readonly codeService: CodeService) {
+    constructor(
+        private readonly codeService: CodeService,
+        private websocketService: WebsocketService
+    ) {
     }
 
     @Get()
@@ -33,8 +37,13 @@ export class CodeController {
      * @param sendTextDto
      */
     @Post('/code/:code/text')
-    async sendText( @Param('code') code, @Body() sendTextDto: SendTextDto): Promise<string> {
-        console.log(code);
-        return JSON.stringify({ success: await this.codeService.sendText(code, sendTextDto) });
+    async sendText(@Param('code') code, @Body() sendTextDto: SendTextDto): Promise<string> {
+
+        if (!await this.codeService.sendText(code, sendTextDto)) {
+            throw new HttpException('Internal server error. Please try again!', HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+
+        this.websocketService.getSocketServer().to('code/'+code).emit('code/text', {text: sendTextDto.text, title: sendTextDto.title, date: Date.now})
+        return JSON.stringify({statusCode: 200});
     }
 }
