@@ -8,6 +8,7 @@ import { SchemaModule } from './schemas/schema.module';
 import { DatabaseModule } from './database/database.module';
 import { SecurityModule } from './security/security.module';
 import { UtilsService } from './utils/utils.service';
+import { ValidatorService } from './utils/validator.service';
 
 @Global()
 @Module({
@@ -19,8 +20,8 @@ import { UtilsService } from './utils/utils.service';
         ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
     ],
     controllers: [AppController],
-    providers: [AppService, UtilsService],
-    exports: [UtilsService]
+    providers: [AppService, UtilsService, ValidatorService],
+    exports: [UtilsService, ValidatorService]
 })
 export class AppModule {
 }

@@ -28,6 +28,7 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/platform-socket.io": "^7.4.4",
     "@nestjs/websockets": "^7.4.4",
+    "class-validator": "^0.12.2",
     "mongoose": "^5.10.7",
     "nestjs-config": "^1.4.7",
     "passport-jwt": "^4.0.0",

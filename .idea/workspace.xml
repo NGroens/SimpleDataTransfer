@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,10 +29,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sdt-server" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/sdt-frontend/node_modules/protractor" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -130,17 +134,27 @@
       <workItem from="1601806865995" duration="13983000" />
       <workItem from="1601828745914" duration="3262000" />
       <workItem from="1601894211514" duration="8711000" />
+      <workItem from="1601971185556" duration="2596000" />
+      <workItem from="1601976709389" duration="33000" />
+      <workItem from="1601976782996" duration="5526000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ts" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601063221992">
+    <state x="823" y="439" key="#ESLint" timestamp="1601977377991">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601063221992" />
+    <state x="823" y="439" key="#ESLint/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601977377991" />
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601976520534">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601976520534" />
     <state x="740" y="269" key="FileChooserDialogImpl" timestamp="1599923721920">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -173,10 +187,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601830120906" />
-    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601919667910">
+    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601977339860">
       <screen x="1920" y="40" width="1920" height="1040" />
     </state>
-    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601919667910" />
+    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601977339860" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -191,7 +205,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sdt-server/src/utils/code/sendText.dto.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

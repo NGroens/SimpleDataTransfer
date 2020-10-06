@@ -1,7 +1,8 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Body, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { WebsocketService } from '../../ws/websocket.service';
 import { CodeManagerService } from '../../code-manager.service';
 import { SendTextDto } from '../../../utils/code/sendText.dto';
+import { SendFileDto } from '../../../utils/code/sendFile.dto';
 
 @Injectable()
 export class CodeService {
@@ -20,8 +21,9 @@ export class CodeService {
      * @description Upload files to s3 storage and send websocket message to file requester if upload was successful
      * @param code
      * @param files
+     * @param backendType
      */
-    sendFiles(code: any, files: any) {
+    sendFiles(code: any, files: any, backendType) {
 
         //TODO do upload shit like upload to s3 and send websocket message
         return 'upload successful!';
