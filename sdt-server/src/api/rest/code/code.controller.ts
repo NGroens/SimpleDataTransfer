@@ -31,11 +31,11 @@ export class CodeController {
      */
     @Post('/code/:code/files')
     @UseInterceptors(FilesInterceptor('files'))
-    sendFiles(@Param('code') code, @UploadedFiles() files, @Query('backendType') backendType: BackendType): string {
+   async sendFiles(@Param('code') code, @UploadedFiles() files, @Query('backendType') backendType: BackendType): Promise<string> {
         if(!this.validatorService.validateEnum(backendType, BackendType)){
             throw new HttpException('Not valid input', HttpStatus.BAD_REQUEST)
         }
-        return this.codeService.sendFiles(code, files, backendType);
+        return await this.codeService.sendFiles(code, files, backendType);
     }
 
     /**

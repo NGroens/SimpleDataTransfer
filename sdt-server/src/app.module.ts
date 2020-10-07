@@ -9,6 +9,7 @@ import { DatabaseModule } from './database/database.module';
 import { SecurityModule } from './security/security.module';
 import { UtilsService } from './utils/utils.service';
 import { ValidatorService } from './utils/validator.service';
+import { StorageModule } from './storage/storage.module';
 
 @Global()
 @Module({
@@ -18,6 +19,7 @@ import { ValidatorService } from './utils/validator.service';
         SecurityModule,
         ApiModule,
         ConfigModule.load(path.resolve(__dirname, 'config', '**/!(*.d).{ts,js}')),
+        StorageModule
     ],
     controllers: [AppController],
     providers: [AppService, UtilsService, ValidatorService],
