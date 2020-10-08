@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="" />
+    <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/styles.scss" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,7 +19,7 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sdt-server" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1hPreYEyyONEDipEv8KYOiXBIUf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -49,7 +57,7 @@
       <recent name="D:\Development\Github\SimpleDataTransfer\sdt-server\src\api" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Angular Application (sdt-frontend)">
+  <component name="RunManager" selected="npm.Angular CLI Server (sdt-frontend)">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -137,7 +145,7 @@
       <workItem from="1602086194973" duration="39000" />
       <workItem from="1602086262371" duration="1486000" />
       <workItem from="1602088681106" duration="9388000" />
-      <workItem from="1602145108582" duration="13584000" />
+      <workItem from="1602145108582" duration="14634000" />
     </task>
     <servers />
   </component>
@@ -164,22 +172,26 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="740" y="269" key="FileChooserDialogImpl/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1599923721920" />
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom" timestamp="1600954736295">
-      <screen x="0" y="40" width="1368" height="872" />
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom" timestamp="1602192162896">
+      <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
-    <state width="1326" height="227" key="GridCell.Tab.0.center" timestamp="1600954736294">
-      <screen x="0" y="40" width="1368" height="872" />
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602192162896" />
+    <state width="1877" height="275" key="GridCell.Tab.0.center" timestamp="1602192162895">
+      <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1326" height="227" key="GridCell.Tab.0.center/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
-    <state width="1326" height="227" key="GridCell.Tab.0.left" timestamp="1600954736294">
-      <screen x="0" y="40" width="1368" height="872" />
+    <state width="1877" height="275" key="GridCell.Tab.0.center/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602192162895" />
+    <state width="1877" height="275" key="GridCell.Tab.0.left" timestamp="1602192162895">
+      <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1326" height="227" key="GridCell.Tab.0.left/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
-    <state width="1326" height="227" key="GridCell.Tab.0.right" timestamp="1600954736295">
-      <screen x="0" y="40" width="1368" height="872" />
+    <state width="1877" height="275" key="GridCell.Tab.0.left/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602192162895" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right" timestamp="1602192162896">
+      <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1326" height="227" key="GridCell.Tab.0.right/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602192162896" />
     <state x="622" y="178" key="NewModule_or_Project.wizard" timestamp="1599923727298">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -192,10 +204,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601830120906" />
-    <state x="446" y="-25" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1602191631767">
+    <state x="446" y="-25" width="1541" height="668" key="dock-window-1" timestamp="1602192038103">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="446" y="-25" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602191631767" />
+    <state x="446" y="-25" width="1541" height="668" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602192038103" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
