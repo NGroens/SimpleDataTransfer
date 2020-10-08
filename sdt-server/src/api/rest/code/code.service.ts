@@ -43,16 +43,16 @@ export class CodeService implements OnModuleInit {
      * @param backendType
      */
     async sendFiles(code: any, files: any, backendType) {
-        const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
-        if (!isOnline) {
-            throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
-        }
+        //TODO implement isOnline secure function
+        // const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
+        // if (!isOnline) {
+        //     throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
+        // }
         switch (backendType.toUpperCase()) {
 
             case BackendType.S3.toUpperCase(): {
                 let newFiles = [];
                 for (const file of files) {
-                    //TODO generate random name and insert file to database
                     const fileName = this.utilsService.makeid(64) + '.' + this.utilsService.getFileExtension(file.originalname);
                     newFiles.push({
                         storageType: 'S3',
@@ -61,6 +61,7 @@ export class CodeService implements OnModuleInit {
                         originalName: file.originalname,
                         date: Math.floor(Date.now() / 1000)
                     });
+
                     const upload = await this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'), code + '/' + fileName);
                     if (!upload) {
                         throw new HttpException('Error', HttpStatus.SERVICE_UNAVAILABLE);
@@ -80,7 +81,21 @@ export class CodeService implements OnModuleInit {
             }
 
             case BackendType.LOCAL.toUpperCase(): {
+                files.forEach((file) => {
 
+                    const fs = require('fs');
+                    const fileName = this.utilsService.makeid(64) + '.' + this.utilsService.getFileExtension(file.originalname);
+                    console.log(fileName);
+                    fs.writeFile(fileName, file.buffer, (err) => {
+                        // throws an error, you could also catch it here
+                        if (err) {
+                            throw err;
+                        }
+
+                        // success case, the file was saved
+                        console.log('Lyric saved!');
+                    });
+                });
                 break;
             }
 

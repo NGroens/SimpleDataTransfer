@@ -3,6 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from 'nestjs-config';
 import { S3Module } from 'nestjs-s3';
 import { S3BucketService } from './s3-bucket.service';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Global()
 @Module({
@@ -20,6 +21,13 @@ import { S3BucketService } from './s3-bucket.service';
             }),
             inject: [ConfigService],
         }),
+        MulterModule.registerAsync({
+            imports: [ConfigModule],
+            useFactory: async (configService: ConfigService) => ({
+                dest: configService.get('storagebackend.LOCAL_DIR'),
+            }),
+            inject: [ConfigService],
+        })
     ],
     controllers: [],
     providers: [S3BucketService],
