@@ -73,9 +73,7 @@ export class CodeGateway implements OnGatewayInit {
 
     @SubscribeMessage('code/check')
     async handleCheck(client: Socket, data: any): Promise<WsResponse<any>> {
-        const requestedCode = await this.codeManagerService.findByCode(data['code']);
-        //TODO user userIsOnlineByCode function
-        if (!requestedCode) {
+        if (!await this.codeManagerService.userIsOnlineByCode(data['code'])) {
             return { event: 'code/check', data: { success: false, code: data['code'] } };
 
         }

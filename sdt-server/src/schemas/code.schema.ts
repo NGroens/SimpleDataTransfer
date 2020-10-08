@@ -14,7 +14,6 @@ import { Document } from 'mongoose';
     ]
  }
  **/
-//TODO add createdAt field
 @Schema()
 export class Code extends Document {
     @Prop({
