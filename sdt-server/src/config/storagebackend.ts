@@ -6,5 +6,6 @@ export default {
     S3_SIGNATURE_VERSION: process.env.S3_SIGNATURE_VERSION || 'v4',
     S3_DEFAULT_BUCKET: process.env.S3_DEFAULT_BUCKET || 'sdf-dev',
     LOCAL_DIR: process.env.LOCAL_DIR || 'public/upload/sdf-dev',
-    LOCAL_END_POINT_URL: process.env.LOCAL_END_POINT || '/upload/sdf-dev/'
+    LOCAL_END_POINT_URL: process.env.LOCAL_END_POINT || '/upload/sdf-dev',
+    LOCAL_DOMAIN: process.env.LOCAL_DOMAIN || 'http://localhost:8080'
 }

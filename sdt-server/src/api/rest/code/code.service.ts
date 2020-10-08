@@ -43,11 +43,10 @@ export class CodeService implements OnModuleInit {
      * @param backendType
      */
     async sendFiles(code: any, files: any, backendType) {
-        //TODO implement isOnline secure function
-        // const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
-        // if (!isOnline) {
-        //     throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
-        // }
+        const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
+        if (!isOnline) {
+            throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
+        }
         switch (backendType.toUpperCase()) {
 
             case BackendType.S3.toUpperCase(): {
@@ -81,21 +80,52 @@ export class CodeService implements OnModuleInit {
             }
 
             case BackendType.LOCAL.toUpperCase(): {
-                files.forEach((file) => {
+                let newFiles = [];
+
+                for (const file of files) {
 
                     const fs = require('fs');
                     const fileName = this.utilsService.makeid(64) + '.' + this.utilsService.getFileExtension(file.originalname);
-                    console.log(fileName);
-                    fs.writeFile(fileName, file.buffer, (err) => {
-                        // throws an error, you could also catch it here
-                        if (err) {
-                            throw err;
-                        }
+                    const filePath = this.configService.get('storagebackend.LOCAL_DIR') + '/' + code;
+                    console.log(fs.existsSync(filePath));
+                    if (!await fs.existsSync(filePath)) {
+                        await fs.mkdirSync(filePath, { recursive: true });
+                    }
+                    const saveSuccess = await new Promise((resolve, reject) => {
+                        fs.writeFile(filePath + '/' + fileName, file.buffer, (err) => {
+                            // throws an error, you could also catch it here
+                            if (err) {
+                                console.log(err);
+                                Logger.error(err);
+                                resolve(false);
+                            }
 
-                        // success case, the file was saved
-                        console.log('Lyric saved!');
+                            resolve(true);
+                        });
                     });
+                    if (!saveSuccess) {
+                        throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+
+                    }
+                    newFiles.push({
+                        storageType: 'LOCAL',
+                        domain: this.configService.get('storagebackend.LOCAL_DOMAIN'),
+                        fileUrl: this.configService.get('storagebackend.LOCAL_END_POINT_URL') + '/' + code + '/' + fileName,
+                        originalName: file.originalname,
+                        date: Math.floor(Date.now() / 1000)
+                    });
+                }
+
+                const added = await this.codeManagerService.addFilesToCode(code, newFiles);
+
+                if (!added) {
+                    throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
+                this.websocketService.getSocketServer().to('code/' + code).emit('code/files', {
+                    files: newFiles
                 });
+
                 break;
             }
 
