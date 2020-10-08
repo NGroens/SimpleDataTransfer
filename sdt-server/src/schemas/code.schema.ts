@@ -28,9 +28,10 @@ export class Code extends Document {
     @Prop(raw([
             {
                 fileID: { type: String, unique: true },
-                storageType: { type: String, enum: ['s3', 'local'] },
+                storageType: { type: String, enum: ['S3', 'LOCAL'] },
                 domain: { type: String },
                 fileUrl: { type: String },
+                originalName: {type: String},
                 date: { type: String, default: Date.now }
             }
         ])

@@ -33,7 +33,6 @@ export class CodeGateway implements OnGatewayInit {
     async handleGeneration(client: Socket, data: string): Promise<WsResponse<any>> {
 
         const code = this.utilsService.generateCode(10);
-        console.log(code);
         const newCode = new this.codeModel({
             code: code,
             files: [],
@@ -66,7 +65,6 @@ export class CodeGateway implements OnGatewayInit {
         if (!requestedCode) {
             return { event: 'code/login', data: { success: false } };
         }
-        console.log(requestedCode);
         const jwt_payload = { _id: requestedCode._id, code: requestedCode.code };
         const jwt = { success: true, token: this.jwtService.sign(jwt_payload), code: requestedCode.code };
         client.join('code/' + requestedCode.code);
@@ -82,7 +80,6 @@ export class CodeGateway implements OnGatewayInit {
 
         }
         await this.server.of('/').adapter.clients(['code/' + data['code']], (err, clients) => {
-            console.log(clients.length);
             if (clients.length > 0) {
                 client.emit('code/check', { success: true, code: data['code'] });
             } else {

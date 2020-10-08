@@ -28,16 +28,19 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sdt-server" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/sdt-frontend/node_modules/protractor" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="N:\Grönsfelder IT Solutions\SimpleDataTransfer\sdt-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -130,17 +133,35 @@
       <workItem from="1601806865995" duration="13983000" />
       <workItem from="1601828745914" duration="3262000" />
       <workItem from="1601894211514" duration="8711000" />
+      <workItem from="1601971185556" duration="2596000" />
+      <workItem from="1601976709389" duration="33000" />
+      <workItem from="1601976782996" duration="5526000" />
+      <workItem from="1602086194973" duration="39000" />
+      <workItem from="1602086262371" duration="1486000" />
+      <workItem from="1602088681106" duration="9388000" />
+      <workItem from="1602145108582" duration="7422000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ts" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601063221992">
+    <state x="823" y="439" key="#ESLint" timestamp="1601977377991">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601063221992" />
+    <state x="823" y="439" key="#ESLint/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601977377991" />
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601976520534">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="722" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601976520534" />
+    <state x="765" y="276" key="#com.intellij.ide.util.MemberChooser" timestamp="1602098601353">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="765" y="276" key="#com.intellij.ide.util.MemberChooser/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602098601353" />
     <state x="740" y="269" key="FileChooserDialogImpl" timestamp="1599923721920">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -165,22 +186,26 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="622" y="178" key="NewModule_or_Project.wizard/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1599923727298" />
-    <state x="461" y="205" key="SettingsEditor" timestamp="1601632089805">
+    <state x="461" y="205" key="SettingsEditor" timestamp="1602086237992">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="461" y="205" key="SettingsEditor/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601632089805" />
+    <state x="461" y="205" key="SettingsEditor/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602086237992" />
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601830120906">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601830120906" />
-    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1601919667910">
-      <screen x="1920" y="40" width="1920" height="1040" />
+    <state x="-1572" y="188" width="1541" height="668" maximized="true" key="dock-window-1" timestamp="1602149544623">
+      <screen x="-2498" y="0" width="2498" height="1080" />
     </state>
-    <state x="2384" y="-19" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1601919667910" />
+    <state x="-1572" y="188" width="1541" height="668" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602149544623" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="539" y="404" width="1541" height="668" key="dock-window-2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1600798353023" />
+    <state x="616" y="260" key="run.anything.popup" timestamp="1602098174708">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="616" y="260" key="run.anything.popup/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602098174708" />
     <state x="623" y="265" key="search.everywhere.popup" timestamp="1601913407291">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -191,7 +216,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/sdt-server/src/utils/code/sendText.dto.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
