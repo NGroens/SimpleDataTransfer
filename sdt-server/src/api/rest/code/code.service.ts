@@ -6,6 +6,7 @@ import { BackendType } from '../../../utils/code/sendFile.dto';
 import { InjectS3, S3 } from 'nestjs-s3';
 import { S3BucketService } from '../../../storage/s3-bucket.service';
 import { ConfigService } from 'nestjs-config';
+import { UtilsService } from '../../../utils/utils.service';
 
 @Injectable()
 export class CodeService implements OnModuleInit {
@@ -14,7 +15,8 @@ export class CodeService implements OnModuleInit {
         private codeManagerService: CodeManagerService,
         private configService: ConfigService,
         @InjectS3() private readonly s3: S3,
-        private s3BucketService: S3BucketService
+        private s3BucketService: S3BucketService,
+        private utilsService: UtilsService
     ) {
     }
 
@@ -41,15 +43,39 @@ export class CodeService implements OnModuleInit {
      * @param backendType
      */
     async sendFiles(code: any, files: any, backendType) {
+        const isOnline = await this.codeManagerService.userIsOnlineByCode(code);
+        if (!isOnline) {
+            throw new HttpException('Code not found', HttpStatus.NOT_FOUND);
+        }
         switch (backendType.toUpperCase()) {
 
             case BackendType.S3.toUpperCase(): {
-
-                files.forEach((file) => {
+                let newFiles = [];
+                for (const file of files) {
                     //TODO generate random name and insert file to database
-                    this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'),code+'/'+file.originalname)
-                });
+                    const fileName = this.utilsService.makeid(64) + '.' + this.utilsService.getFileExtension(file.originalname);
+                    newFiles.push({
+                        storageType: 'S3',
+                        domain: this.configService.get('storagebackend.S3_END_POINT'),
+                        fileUrl: this.configService.get('storagebackend.S3_DEFAULT_BUCKET') + '/' + code + '/' + fileName,
+                        originalName: file.originalname,
+                        date: Math.floor(Date.now() / 1000)
+                    });
+                    const upload = await this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'), code + '/' + fileName);
+                    if (!upload) {
+                        throw new HttpException('Error', HttpStatus.SERVICE_UNAVAILABLE);
+                    }
+                }
 
+                const added = await this.codeManagerService.addFilesToCode(code, newFiles);
+
+                if (!added) {
+                    throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+
+                this.websocketService.getSocketServer().to('code/' + code).emit('code/files', {
+                    files: newFiles
+                });
                 break;
             }
 
@@ -62,8 +88,10 @@ export class CodeService implements OnModuleInit {
                 throw new HttpException('Not a valid backend-type', HttpStatus.BAD_REQUEST);
             }
         }
-        //TODO do upload shit like upload to s3 and send websocket message
-        return 'upload successful!';
+        return JSON.stringify({
+            statusCode: 200,
+            message: 'Upload successful'
+        });
     }
 
     async sendText(code: any, sendTextDto: SendTextDto) {
