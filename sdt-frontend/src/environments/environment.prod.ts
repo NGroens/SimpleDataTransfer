@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  socketIOEndpoint: 'http://api.sdf.mycoding.systems'
+
 };

@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 100%">
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="!loading && !error">
+    <qrcode [qrdata]="this.code" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+    <span>{{'PAGES.RECEIVE.YOUR_CODE' | translate:yourCodeParam}}</span>
+  </div>
+  <div *ngIf="!loading && error">
+    <mat-card>
+      <mat-card-content class="red-text">
+        {{this.error}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

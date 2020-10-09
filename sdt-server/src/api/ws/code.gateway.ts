@@ -50,6 +50,8 @@ export class CodeGateway implements OnGatewayInit {
                 if (error.code !== 11000) {
                     console.log(error);
                 }
+
+                console.log(error)
                 returnValue = { event: 'code/generate', data: { success: false } };
             });
         return returnValue;
