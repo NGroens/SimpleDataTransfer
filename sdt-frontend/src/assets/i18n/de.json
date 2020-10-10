@@ -5,7 +5,7 @@
       "RECEIVE": "Daten empfangen"
     },
     "RECEIVE": {
-      "YOUR_CODE": "Ihr Code zum empfangen lautet: {{code}}",
+      "YOUR_CODE": "Lassen Sie folgenden QR-Code scannen oder geben Sie folgenden Code weiter:",
       "ERROR": {
         "GET_TOKEN_FAILED": "Es konnte kein Code generiert werden. Laden Sie die Seite neu oder melden Sie sich bei dem Administrator der Webseite.",
         "INVALID_TOKEN": "Es ist ein Fehler beim wiederherstellen des gespeicherten Codes aufgetreten. Daher wurde ein neuer Code beantragt."

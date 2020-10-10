@@ -16,6 +16,9 @@ import { SendComponent } from './pages/send/send.component';
 import { ReceiveComponent } from './pages/receive/receive.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { QRCodeModule } from 'angularx-qrcode';
+import { CodeInputModule } from 'angular-code-input';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent],
@@ -29,7 +32,10 @@ import { QRCodeModule } from 'angularx-qrcode';
     CommonModule,
     MatRippleModule,
     MatProgressSpinnerModule,
-    QRCodeModule
+    QRCodeModule,
+    CodeInputModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: []
 })

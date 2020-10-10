@@ -57,6 +57,7 @@ import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { environment } from '../environments/environment';
 import { WebsocketService } from './core/services/websocket.service';
 import { QRCodeModule } from 'angularx-qrcode';
+import { CodeInputModule } from 'angular-code-input';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -83,7 +84,8 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
     }),
     FlexLayoutModule,
     SocketIoModule.forRoot(config),
-    QRCodeModule
+    QRCodeModule,
+    CodeInputModule
 
 
   ],

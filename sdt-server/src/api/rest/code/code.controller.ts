@@ -54,7 +54,7 @@ export class CodeController {
         this.websocketService.getSocketServer().to('code/' + code).emit('code/text', {
             text: sendTextDto.text,
             title: sendTextDto.title,
-            date: Date.now
+            date: Date.now()
         });
         return JSON.stringify({ statusCode: 200 });
     }
