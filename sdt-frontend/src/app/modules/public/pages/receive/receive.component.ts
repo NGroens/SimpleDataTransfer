@@ -4,12 +4,6 @@ import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-export interface DataElement {
-  originalName: string;
-  show: string;
-  date: number;
-}
-
 
 @Component({
   selector: 'app-receive',
@@ -17,6 +11,8 @@ export interface DataElement {
   styleUrls: ['./receive.component.scss']
 })
 export class ReceiveComponent implements OnInit, OnDestroy {
+  displayedColumns: string[] = ['originalName', 'show', 'date', 'type'];
+  dataSource = ELEMENT_DATA;
 
   generateCode: Subscription;
   loginCode: Subscription;
@@ -27,9 +23,7 @@ export class ReceiveComponent implements OnInit, OnDestroy {
   error = null;
   code = null;
   yourCodeParam;
-  displayedColumns: string[] = ['originalName', 'show', 'date'];
 
-  dataSource = [];
 
   constructor(
     private websocketService: WebsocketService,
@@ -50,18 +44,6 @@ export class ReceiveComponent implements OnInit, OnDestroy {
 
     }
 
-    setTimeout(() => {
-      const newDataSource = this.dataSource;
-
-      newDataSource.push({
-        originalName: 'test',
-        show: '<a>Text zeigen</a>',
-        date: 123
-      });
-      this.dataSource = newDataSource;
-      console.log(newDataSource);
-      this.changeDetectorRefs.detectChanges();
-    }, 1000);
 
   }
 
@@ -97,31 +79,45 @@ export class ReceiveComponent implements OnInit, OnDestroy {
     });
 
     this.textCode = this.websocketService.getSocket().fromEvent('code/text').subscribe((event: any) => {
-      // console.log(event);
-      const newDataSource = this.dataSource;
 
+      // TODO implement language system and add modal
+      const newDataSource = [];
       newDataSource.push({
         originalName: event.text,
         show: '<a>Text zeigen</a>',
-        date: event.date
+        date: event.date,
+        type: 'Text'
+      });
+      this.dataSource.forEach((data) => {
+        newDataSource.push(data);
       });
       this.dataSource = newDataSource;
       console.log(newDataSource);
       this.changeDetectorRefs.detectChanges();
-      // console.log(event);
-      // // const newData: PeriodicElement = {
-      // //   originalName: event.text,
-      // //   show: '<a>Text zeigen</a>',
-      // //   date: event.date
-      // // };
-      //
-      // const newData = {
-      //   originalName: 'moin',
-      //   show: '<a>Text zeigen</a>',
-      //   date: 12
-      // };
-      //
-      // this.dataSource.push(newData);
+
+    });
+    this.fileCode = this.websocketService.getSocket().fromEvent('code/files').subscribe((event: any) => {
+      console.log(event);
+      // TODO implement language system
+      // TODO add modal
+      // TODO implement try catch and error handling
+      const newDataSource = [];
+
+      event.files.forEach((file) => {
+        newDataSource.push({
+          originalName: file.originalName,
+          show: '<a>Datei öffnen</a>',
+          date: file.date,
+          type: 'Datei'
+        });
+      });
+
+      this.dataSource.forEach((data) => {
+        newDataSource.push(data);
+      });
+      this.dataSource = newDataSource;
+      console.log(newDataSource);
+      this.changeDetectorRefs.detectChanges();
 
     });
   }
@@ -132,3 +128,13 @@ export class ReceiveComponent implements OnInit, OnDestroy {
   }
 
 }
+
+export interface DataElement {
+  originalName: string;
+  type: string;
+  show: string;
+  date: number;
+}
+
+
+const ELEMENT_DATA: DataElement[] = [];

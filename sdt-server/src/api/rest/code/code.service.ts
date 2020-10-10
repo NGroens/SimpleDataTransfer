@@ -58,7 +58,7 @@ export class CodeService implements OnModuleInit {
                         domain: this.configService.get('storagebackend.S3_END_POINT'),
                         fileUrl: this.configService.get('storagebackend.S3_DEFAULT_BUCKET') + '/' + code + '/' + fileName,
                         originalName: file.originalname,
-                        date: Math.floor(Date.now() / 1000)
+                        date: Date.now()
                     });
 
                     const upload = await this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'), code + '/' + fileName);
@@ -112,7 +112,7 @@ export class CodeService implements OnModuleInit {
                         domain: this.configService.get('storagebackend.LOCAL_DOMAIN'),
                         fileUrl: this.configService.get('storagebackend.LOCAL_END_POINT_URL') + '/' + code + '/' + fileName,
                         originalName: file.originalname,
-                        date: Math.floor(Date.now() / 1000)
+                        date: Date.now()
                     });
                 }
 

@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/public.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/public.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/assets/i18n/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/assets/i18n/de.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +15,7 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sdt-server" />
   </component>
   <component name="ProjectId" id="1hPreYEyyONEDipEv8KYOiXBIUf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -151,7 +145,7 @@
       <workItem from="1602145108582" duration="16605000" />
       <workItem from="1602228242820" duration="11910000" />
       <workItem from="1602273910507" duration="5602000" />
-      <workItem from="1602321111518" duration="8273000" />
+      <workItem from="1602321111518" duration="9535000" />
     </task>
     <servers />
   </component>
@@ -210,10 +204,10 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="772" y="470" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602324579455" />
-    <state x="1993" y="-9" width="1294" height="577" key="dock-window-1" timestamp="1602367128554">
+    <state x="1993" y="-9" width="1294" height="577" maximized="true" key="dock-window-1" timestamp="1602371308033">
       <screen x="1920" y="40" width="1920" height="1040" />
     </state>
-    <state x="1993" y="-9" width="1294" height="577" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602367128554" />
+    <state x="1993" y="-9" width="1294" height="577" maximized="true" key="dock-window-1/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602371308033" />
     <state x="539" y="404" width="1541" height="668" key="dock-window-2" timestamp="1600798353023">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
