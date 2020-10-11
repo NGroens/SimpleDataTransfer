@@ -1,8 +1,11 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { WebsocketService } from '../../../../core/services/websocket.service';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -10,9 +13,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './receive.component.html',
   styleUrls: ['./receive.component.scss']
 })
-export class ReceiveComponent implements OnInit, OnDestroy {
+export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns: string[] = ['originalName', 'show', 'date', 'type'];
-  dataSource = ELEMENT_DATA;
+  dataSource: MatTableDataSource<DataElement>;
 
   generateCode: Subscription;
   loginCode: Subscription;
@@ -24,6 +27,8 @@ export class ReceiveComponent implements OnInit, OnDestroy {
   code = null;
   yourCodeParam;
 
+  @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static:false}) sort: MatSort;
 
   constructor(
     private websocketService: WebsocketService,
@@ -31,9 +36,12 @@ export class ReceiveComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private changeDetectorRefs: ChangeDetectorRef
   ) {
+    this.dataSource = new MatTableDataSource<DataElement>(ELEMENT_DATA);
+
   }
 
   ngOnInit(): void {
+
     this.registerEvents();
     console.log(localStorage.getItem('sdf_token'));
     if (localStorage.getItem('sdf_token')) {
@@ -45,6 +53,18 @@ export class ReceiveComponent implements OnInit, OnDestroy {
     }
 
 
+  }
+
+
+  /**
+   * Set the paginator and sort after the view init since this component will
+   * be able to query its view for the initialized paginator and sort.
+   */
+  ngAfterViewInit() {
+    this.sort?.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    setTimeout(() => this.dataSource.paginator = this.paginator, 300);
+    this.dataSource.sort = this.sort;
   }
 
   registerEvents() {
@@ -88,13 +108,12 @@ export class ReceiveComponent implements OnInit, OnDestroy {
         date: event.date,
         type: 'Text'
       });
-      this.dataSource.forEach((data) => {
+      this.dataSource.data.forEach((data) => {
         newDataSource.push(data);
       });
-      this.dataSource = newDataSource;
+      this.dataSource.data = newDataSource;
       console.log(newDataSource);
       this.changeDetectorRefs.detectChanges();
-
     });
     this.fileCode = this.websocketService.getSocket().fromEvent('code/files').subscribe((event: any) => {
       console.log(event);
@@ -112,10 +131,10 @@ export class ReceiveComponent implements OnInit, OnDestroy {
         });
       });
 
-      this.dataSource.forEach((data) => {
+      this.dataSource.data.forEach((data) => {
         newDataSource.push(data);
       });
-      this.dataSource = newDataSource;
+      this.dataSource.data = newDataSource;
       console.log(newDataSource);
       this.changeDetectorRefs.detectChanges();
 

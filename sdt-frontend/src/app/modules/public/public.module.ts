@@ -19,24 +19,26 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CodeInputModule } from 'angular-code-input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent],
-  imports: [
-    PublicRoutingModule,
-    TranslateModule,
-    MatGridListModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatButtonModule,
-    CommonModule,
-    MatRippleModule,
-    MatProgressSpinnerModule,
-    QRCodeModule,
-    CodeInputModule,
-    MatTableModule,
-    MatSortModule
-  ],
+    imports: [
+        PublicRoutingModule,
+        TranslateModule,
+        MatGridListModule,
+        FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        CommonModule,
+        MatRippleModule,
+        MatProgressSpinnerModule,
+        QRCodeModule,
+        CodeInputModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule
+    ],
   providers: []
 })
 export class PublicModule {
