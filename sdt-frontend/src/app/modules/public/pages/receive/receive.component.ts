@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../../../shared/components/modal/modal.component';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
   textCode: Subscription;
   fileCode: Subscription;
 
+  localSavedText: IHashmap[] = [];
+
   loading = true;
   error = null;
   code = null;
@@ -34,7 +38,8 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     private websocketService: WebsocketService,
     private translateService: TranslateService,
     private snackBar: MatSnackBar,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    public dialog: MatDialog
   ) {
     this.dataSource = new MatTableDataSource<DataElement>(ELEMENT_DATA);
 
@@ -99,35 +104,37 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     this.textCode = this.websocketService.getSocket().fromEvent('code/text').subscribe((event: any) => {
-
-      // TODO implement language system and add modal
+      const uCode = this.generateUCode(32);
+      this.localSavedText[uCode] = event.text;
       const newDataSource = [];
       newDataSource.push({
         originalName: event.title,
-        show: '<a>Text zeigen</a>',
+        show: this.translateService.instant('PAGES.RECEIVE.INCOMING_TEXT.SHOW'),
         date: event.date,
-        type: 'Text'
+        type: this.translateService.instant('PAGES.RECEIVE.INCOMING_TEXT.TYPE_TEXT'),
+        id: uCode,
+        typeRaw: 'text'
+
       });
       this.dataSource.data.forEach((data) => {
         newDataSource.push(data);
       });
       this.dataSource.data = newDataSource;
-      console.log(newDataSource);
       this.changeDetectorRefs.detectChanges();
     });
     this.fileCode = this.websocketService.getSocket().fromEvent('code/files').subscribe((event: any) => {
       console.log(event);
-      // TODO implement language system
-      // TODO add modal
       // TODO implement try catch and error handling
       const newDataSource = [];
 
       event.files.forEach((file) => {
         newDataSource.push({
           originalName: file.originalName,
-          show: '<a>Datei öffnen</a>',
+          show: this.translateService.instant('PAGES.RECEIVE.INCOMING_FILE.SHOW'),
           date: file.date,
-          type: 'Datei'
+          type: this.translateService.instant('PAGES.RECEIVE.INCOMING_FILE.TYPE_FILE'),
+          previewUrl: file.domain + '/' + file.fileUrl,
+          typeRaw: 'file'
         });
       });
 
@@ -146,6 +153,25 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     this.loginCode.unsubscribe();
   }
 
+  openModal(id) {
+    console.log(id);
+
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: { text: this.localSavedText[id] }
+    });
+
+  }
+
+  generateUCode(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
 }
 
 export interface DataElement {
@@ -153,6 +179,10 @@ export interface DataElement {
   type: string;
   show: string;
   date: number;
+}
+
+export interface IHashmap {
+  [key: string]: string;
 }
 
 

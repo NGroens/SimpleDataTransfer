@@ -158,6 +158,7 @@ export class CodeService implements OnModuleInit {
             Body: file,
         };
         return new Promise((resolve, reject) => {
+            // TODO implement access management
             this.s3.upload(params, (err, data) => {
                 if (err) {
                     Logger.error(err);

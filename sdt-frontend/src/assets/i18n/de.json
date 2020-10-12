@@ -9,6 +9,24 @@
       "ERROR": {
         "GET_TOKEN_FAILED": "Es konnte kein Code generiert werden. Laden Sie die Seite neu oder melden Sie sich bei dem Administrator der Webseite.",
         "INVALID_TOKEN": "Es ist ein Fehler beim wiederherstellen des gespeicherten Codes aufgetreten. Daher wurde ein neuer Code beantragt."
+      },
+      "TABLE": {
+        "TITLE": "Titel",
+        "SHOW": "Anzeigen",
+        "DATE": "Datum",
+        "TYPE": "Typ"
+      },
+      "INCOMING_TEXT": {
+        "SHOW": "Text zeigen",
+        "TYPE_TEXT": "Text"
+      },
+      "INCOMING_FILE": {
+        "SHOW": "Datei öffnen",
+        "TYPE_FILE": "Datei"
+      },
+      "MODAL": {
+        "TITLE": "Text anzeigen.",
+        "CLOSE": "Schließen"
       }
     },
     "SEND": {
