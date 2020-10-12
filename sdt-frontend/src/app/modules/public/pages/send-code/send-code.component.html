@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" style="height: 100%">
+
+  <div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+    <br>
+    <span>{{'PAGES.SEND.MESSAGES.CHECK_ENTERED_CODE' | translate}}</span>
+  </div>
+
+  <div *ngIf="!loading && !error">
+    Test
+  </div>
+
+  <div *ngIf="!loading && error">
+    <mat-card>
+      <mat-card-content class="red-text">
+        {{this.error}}<br>
+        <a routerLink="/public/send">{{'PAGES.SEND.MESSAGES.ENTER_CODE_AGAIN_BUTTON' | translate}}</a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+</div>

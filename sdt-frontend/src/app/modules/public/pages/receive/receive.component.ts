@@ -27,8 +27,8 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
   code = null;
   yourCodeParam;
 
-  @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static:false}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private websocketService: WebsocketService,

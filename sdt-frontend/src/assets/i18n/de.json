@@ -10,6 +10,30 @@
         "GET_TOKEN_FAILED": "Es konnte kein Code generiert werden. Laden Sie die Seite neu oder melden Sie sich bei dem Administrator der Webseite.",
         "INVALID_TOKEN": "Es ist ein Fehler beim wiederherstellen des gespeicherten Codes aufgetreten. Daher wurde ein neuer Code beantragt."
       }
+    },
+    "SEND": {
+      "ARROW_BACK": "Andere Methode auswählen.",
+      "CHOOSE_OPTION": {
+        "SCAN": "QR-Code scannen",
+        "INPUT": "Code eingeben"
+      },
+      "SCAN": {
+        "SELECT_DEVICE": "Wählen Sie ein Gerät aus.",
+        "NO_DEVICE_SELECTED": "Kein Gerät ausgewählt",
+        "STATE_MESSAGES":{
+          "START":  "QR-Code scanner läd...",
+          "ASK_PERMISSION": "Es wird nach der Berechtigung für die Kamera gefragt. Bitte lassen Sie diese Berechtigung zu.",
+          "NO_PERMISSIONS": "Sie haben die Kamera-Nutzung nicht erlaubt. Bitte erlauben Sie diese oder wählen Sie zurück und geben stattdessen den Code per Hand ein."
+        },
+        "MESSAGES": {
+          "CODE_SCANNED": "Ein Code wurde gefunden. Sie können nun Daten senden."
+        }
+      },
+      "MESSAGES": {
+        "CHECK_ENTERED_CODE": "Der Code wird geprüft...",
+        "CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
+        "ENTER_CODE_AGAIN_BUTTON": "Zurück"
+      }
     }
   },
   "OK_BUTTON": "Verstanden"

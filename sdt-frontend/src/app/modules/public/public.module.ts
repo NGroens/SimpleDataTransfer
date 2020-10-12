@@ -20,25 +20,34 @@ import { CodeInputModule } from 'angular-code-input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { SendCodeComponent } from './pages/send-code/send-code.component';
 
 @NgModule({
-  declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent],
-    imports: [
-        PublicRoutingModule,
-        TranslateModule,
-        MatGridListModule,
-        FlexLayoutModule,
-        MatCardModule,
-        MatButtonModule,
-        CommonModule,
-        MatRippleModule,
-        MatProgressSpinnerModule,
-        QRCodeModule,
-        CodeInputModule,
-        MatTableModule,
-        MatSortModule,
-        MatPaginatorModule
-    ],
+  declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent, SendCodeComponent],
+  imports: [
+    PublicRoutingModule,
+    TranslateModule,
+    MatGridListModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatButtonModule,
+    CommonModule,
+    MatRippleModule,
+    MatProgressSpinnerModule,
+    QRCodeModule,
+    CodeInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatIconModule,
+    ZXingScannerModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
   providers: []
 })
 export class PublicModule {

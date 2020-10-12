@@ -30,7 +30,8 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/custom-theme.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/grid.min.css"
             ],
             "scripts": []
           },

@@ -4,6 +4,7 @@ import { PublicComponent } from './public/public.component';
 import { ChooseComponent } from './pages/choose/choose.component';
 import { SendComponent } from './pages/send/send.component';
 import { ReceiveComponent } from './pages/receive/receive.component';
+import { SendCodeComponent } from './pages/send-code/send-code.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'send',
         component: SendComponent
+      },
+      {
+        path: 'send/:code',
+        component: SendCodeComponent
       },
       {
         path: 'receive',
