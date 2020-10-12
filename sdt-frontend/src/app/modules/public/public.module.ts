@@ -25,6 +25,8 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SendCodeComponent } from './pages/send-code/send-code.component';
+import { FormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent, SendCodeComponent],
@@ -46,7 +48,9 @@ import { SendCodeComponent } from './pages/send-code/send-code.component';
     MatIconModule,
     ZXingScannerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    MatRadioModule
   ],
   providers: []
 })

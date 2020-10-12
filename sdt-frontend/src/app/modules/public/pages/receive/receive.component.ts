@@ -103,7 +103,7 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
       // TODO implement language system and add modal
       const newDataSource = [];
       newDataSource.push({
-        originalName: event.text,
+        originalName: event.title,
         show: '<a>Text zeigen</a>',
         date: event.date,
         type: 'Text'

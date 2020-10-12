@@ -32,6 +32,9 @@ export class CodeController {
     @Post('/code/:code/files')
     @UseInterceptors(FilesInterceptor('files'))
    async sendFiles(@Param('code') code, @UploadedFiles() files, @Query('backendType') backendType: BackendType): Promise<string> {
+        if(!backendType){
+            throw new HttpException('Not valid input', HttpStatus.BAD_REQUEST)
+        }
         if(!this.validatorService.validateEnum(backendType, BackendType)){
             throw new HttpException('Not valid input', HttpStatus.BAD_REQUEST)
         }
