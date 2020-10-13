@@ -154,7 +154,7 @@ export class CodeService implements OnModuleInit {
 
         const params = {
             Bucket: bucket,
-            Key: String(name),
+            Key: String(name), 
             Body: file,
         };
         return new Promise((resolve, reject) => {
