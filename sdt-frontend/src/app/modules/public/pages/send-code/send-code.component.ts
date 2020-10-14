@@ -104,6 +104,7 @@ export class SendCodeComponent implements OnInit, OnDestroy {
   }
 
   sendFile(formData: any, sendFileForm) {
+    // TODO check error handling when requested code is offline
     this.apiService.uploadFiles(this.code, this.filesToUpload, formData.backendType).subscribe((response: any) => {
       if (response.statusCode === 200) {
         this.snackBar.open(
@@ -141,7 +142,6 @@ export class SendCodeComponent implements OnInit, OnDestroy {
             }
           );
         }
-
       }
     });
 

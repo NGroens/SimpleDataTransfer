@@ -58,11 +58,16 @@ export class CodeService implements OnModuleInit {
                         domain: this.configService.get('storagebackend.S3_END_POINT'),
                         fileUrl: this.configService.get('storagebackend.S3_DEFAULT_BUCKET') + '/' + code + '/' + fileName,
                         originalName: file.originalname,
+                        fileName: fileName,
                         date: Date.now()
                     });
 
                     const upload = await this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'), code + '/' + fileName);
-                    if (!upload) {
+                    const setPermissions = await this.addBuckerPermissions(
+                        code + '/' + fileName,
+                        this.configService.get('storagebackend.S3_DEFAULT_BUCKET')
+                    );
+                    if (!upload || !setPermissions) {
                         throw new HttpException('Error', HttpStatus.SERVICE_UNAVAILABLE);
                     }
                 }
@@ -112,6 +117,7 @@ export class CodeService implements OnModuleInit {
                         domain: this.configService.get('storagebackend.LOCAL_DOMAIN'),
                         fileUrl: this.configService.get('storagebackend.LOCAL_END_POINT_URL') + '/' + code + '/' + fileName,
                         originalName: file.originalname,
+                        fileName: fileName,
                         date: Date.now()
                     });
                 }
@@ -121,9 +127,24 @@ export class CodeService implements OnModuleInit {
                 if (!added) {
                     throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
                 }
-
+                let updateFiles = [];
+                let allNewFiles = [];
+                const updatedCode = await this.codeManagerService.findByCode(code);
+                for (const file of updatedCode.files) {
+                    const updated = await this.updateFileArray(file, newFiles)
+                    if (updated['updated']) {
+                        allNewFiles.push(updated['file']);
+                        updateFiles.push(updated['file']);
+                    } else {
+                        allNewFiles.push(file);
+                    }
+                }
+                const codeUpdated = this.codeManagerService.updateFileArray(code, allNewFiles);
+                if (!codeUpdated) {
+                    throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
+                }
                 this.websocketService.getSocketServer().to('code/' + code).emit('code/files', {
-                    files: newFiles
+                    files: updateFiles
                 });
 
                 break;
@@ -154,7 +175,7 @@ export class CodeService implements OnModuleInit {
 
         const params = {
             Bucket: bucket,
-            Key: String(name), 
+            Key: String(name),
             Body: file,
         };
         return new Promise((resolve, reject) => {
@@ -164,9 +185,61 @@ export class CodeService implements OnModuleInit {
                     Logger.error(err);
                     reject(err.message);
                 }
+
                 resolve(data);
             });
         });
+    }
+
+    async addBuckerPermissions(principal, bucketName) {
+        var readOnlyAnonUserPolicy = {
+            Version: '2012-10-17',
+            Statement: [
+                {
+                    Sid: 'AddPerm',
+                    Effect: 'Allow',
+                    Principal: '*',
+                    Action: [
+                        's3:GetObject'
+                    ],
+                    Resource: [
+                        ''
+                    ]
+                }
+            ]
+        };
+
+// create selected bucket resource string for bucket policy
+        var bucketResource = 'arn:aws:s3:::' + bucketName + '/*';
+        readOnlyAnonUserPolicy.Statement[0].Resource[0] = bucketResource;
+
+// convert policy JSON into string and assign into params
+        var bucketPolicyParams = { Bucket: bucketName, Policy: JSON.stringify(readOnlyAnonUserPolicy) };
+        return new Promise((resolve, reject) => {
+            // set the new policy on the selected bucket
+            this.s3.putBucketPolicy(bucketPolicyParams, function(err, data) {
+                if (err) {
+                    resolve(false);
+                    // display error message
+                    console.log('Error', err);
+                } else {
+                    resolve(true);
+                }
+            });
+        });
+    }
+
+    async updateFileArray(file, newFiles){
+        return new Promise((resolve => {
+            newFiles.forEach((newFile) => {
+                if (file.fileName === newFile.fileName) {
+                    file.fileUrl = 'download/' + file.id;
+                    resolve({updated: true, file: file});
+                    return;
+                }
+                resolve({ updated: false });
+            });
+        }));
     }
 
 }

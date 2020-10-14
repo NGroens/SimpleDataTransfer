@@ -30,6 +30,7 @@ export class Code extends Document {
                 domain: { type: String },
                 fileUrl: { type: String },
                 originalName: {type: String},
+                fileName: {type: String},
                 date: { type: String, default: Date.now }
             }
         ])

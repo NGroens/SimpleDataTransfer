@@ -3,7 +3,6 @@ import { Code } from '../schemas/code.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { WebsocketService } from './ws/websocket.service';
-import { constants } from 'os';
 
 
 @Injectable()
@@ -103,12 +102,54 @@ export class CodeManagerService {
 
 
         return new Promise(resolve => {
-            requtestedCode.save().then(() => {
+            requtestedCode.save().then((updatedCode) => {
+                console.log(updatedCode);
                 resolve(true);
             }).catch((error) => {
                 console.log(error);
                 resolve(false);
             });
         });
+    }
+
+    async updateFileArray(code, fileArray) {
+        const requtestedCode = await this.findByCode(code);
+        if (!requtestedCode) {
+            return Promise.resolve(false);
+        }
+        if (requtestedCode.files.length <= 0) {
+            requtestedCode.files = [];
+        }
+
+        requtestedCode.files = fileArray;
+
+
+        return new Promise(resolve => {
+            requtestedCode.save().then((updatedCode) => {
+                resolve(true);
+            }).catch((error) => {
+                resolve(false);
+            });
+        });
+    }
+
+    async getFileDocumentByID(fileID) {
+        const code = await this.codeModel.findOne({ 'files._id': { $gte: fileID } }).exec();
+
+        return new Promise(resolve => {
+            code.files.forEach((file) => {
+                if (file._id == fileID) {
+                    resolve({ code: code.code, fileDocument: file });
+                }
+            });
+        });
+
+
+    }
+
+    async getCodeDocumentByFIleID(fileID) {
+
+        return await this.codeModel.findOne({ 'files._id': { $gte: fileID } }).exec();
+
     }
 }
