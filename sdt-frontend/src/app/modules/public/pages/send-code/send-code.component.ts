@@ -23,7 +23,7 @@ export class SendCodeComponent implements OnInit, OnDestroy {
 
   backendTypeOptions = [
     { name: this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.S3_OPTION'), value: 's3', checked: true },
-    { name:  this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.LOCAL_OPTION'), value: 'local', checked: false }
+    { name: this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.LOCAL_OPTION'), value: 'local', checked: false }
   ];
   selectedBackendType = 's3';
 
@@ -66,6 +66,15 @@ export class SendCodeComponent implements OnInit, OnDestroy {
   }
 
   sendText(value, form) {
+    if (!value.title || !value.text) {
+      this.snackBar.open(
+        this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INSERT_ALL_DATA'),
+        null,
+        {
+          duration: 5000
+        });
+      return;
+    }
     this.apiService.sendText(this.code, value).subscribe((response: any) => {
       console.log(response);
       if (response.statusCode === 200) {
@@ -77,36 +86,43 @@ export class SendCodeComponent implements OnInit, OnDestroy {
           });
         form.reset();
       } else {
-        if (response.statusCode === 400) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.BAD_REQUEST'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
-        if (response.statusCode === 404) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.ERROR_CODE_NOT_VALID'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
-        if (response.statusCode === 500) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
-
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
       }
-    });
+    }, (error => {
+      if (error.error.statusCode === 400) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.BAD_REQUEST'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+      if (error.error.statusCode === 404) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.ERROR_CODE_NOT_VALID'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+      if (error.error.statusCode === 500) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+    }));
   }
 
   sendFile(formData: any, sendFileForm) {

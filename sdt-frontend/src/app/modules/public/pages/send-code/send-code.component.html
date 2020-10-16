@@ -39,7 +39,7 @@
                 </mat-radio-group>
               </div>
               <div class="col-12">
-                <button mat-raised-button color="primary" type="submit"
+                <button mat-raised-button color="primary" type="submit" [disabled]="!sendFileForm.valid || filesToUpload.length < 1"
                         style="width: 100%">{{'PAGES.SEND.SEND_DATA.SEND_FILE.SEND_BUTTON' | translate }}</button>
               </div>
             </div>
@@ -49,8 +49,9 @@
       <mat-card class="col-12 col-md-5">
         <mat-card-header>{{'PAGES.SEND.SEND_DATA.SEND_TEXT.TITLE' | translate }}</mat-card-header>
         <mat-card-content>
-          <div class="row">
             <form (ngSubmit)="sendText(sendTextForm.value, sendTextForm)" #sendTextForm="ngForm">
+              <div class="row">
+
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label>{{'PAGES.SEND.SEND_DATA.SEND_TEXT.TITLE_FIELD' | translate }}</mat-label>
                 <input matInput name="title" ngModel required>
@@ -63,10 +64,13 @@
               <!--              <button mat-raised-button mat color="primary"  class="col-12">Primary</button>-->
 
               <!--            </mat-form-field>-->
-              <button mat-raised-button color="primary" type="submit"
-                      style="width: 100%">{{'PAGES.SEND.SEND_DATA.SEND_TEXT.SEND_BUTTON' | translate }}</button>
+                <div class="col-12">
+                  <button mat-raised-button color="primary" type="submit" [disabled]="!sendTextForm.valid"
+                          style="width: 100%">{{'PAGES.SEND.SEND_DATA.SEND_TEXT.SEND_BUTTON' | translate }}</button>
+                </div>
+
+              </div>
             </form>
-          </div>
         </mat-card-content>
       </mat-card>
     </div>
