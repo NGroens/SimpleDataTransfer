@@ -33,11 +33,9 @@
                 <input type="file" (change)="handleFileInput($event.target.files)" multiple required>
               </div>
               <div class="col-12">
-                <mat-radio-group aria-label="Select an option" name="backendType" ngModel required>
-                  <mat-radio-button
-                    value="s3" [checked]="true">{{'PAGES.SEND.SEND_DATA.SEND_FILE.S3_OPTION' | translate }}</mat-radio-button>
-                  <mat-radio-button
-                    value="local">{{'PAGES.SEND.SEND_DATA.SEND_FILE.LOCAL_OPTION' | translate }}</mat-radio-button>
+                <mat-radio-group aria-label="Select an option" name="backendType" [(ngModel)]="selectedBackendType" required>
+                  <mat-radio-button *ngFor="let op of backendTypeOptions"
+                                    [checked]="op.checked" [value]="op.value">{{ op.name}}</mat-radio-button>
                 </mat-radio-group>
               </div>
               <div class="col-12">

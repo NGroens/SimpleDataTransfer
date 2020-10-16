@@ -21,6 +21,12 @@ export class SendCodeComponent implements OnInit, OnDestroy {
 
   filesToUpload: File[] = [];
 
+  backendTypeOptions = [
+    { name: this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.S3_OPTION'), value: 's3', checked: true },
+    { name:  this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.LOCAL_OPTION'), value: 'local', checked: false }
+  ];
+  selectedBackendType = 's3';
+
   handleFileInput(files: FileList) {
     // @ts-ignore
     for (const file of files) {
@@ -104,8 +110,15 @@ export class SendCodeComponent implements OnInit, OnDestroy {
   }
 
   sendFile(formData: any, sendFileForm) {
+    if (!formData.backendType) {
+      this.snackBar.open(this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.ENTER_BACKENDTYPE'), this.translateService.instant('OK_BUTTON'), {
+        duration: 5000
+      });
+      return;
+    }
     // TODO check error handling when requested code is offline
     this.apiService.uploadFiles(this.code, this.filesToUpload, formData.backendType).subscribe((response: any) => {
+      console.log('ERROR ehey');
       console.log(response);
       if (response.statusCode === 200) {
         this.snackBar.open(
@@ -116,35 +129,45 @@ export class SendCodeComponent implements OnInit, OnDestroy {
           });
         sendFileForm.reset();
       } else {
-        if (response.statusCode === 400 || response.statusCode === 503) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.BAD_REQUEST'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
-        if (response.statusCode === 404) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.ERROR_CODE_NOT_VALID'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
-        if (response.statusCode === 500) {
-          this.snackBar.open(
-            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
-            this.translateService.instant('OK_BUTTON'),
-            {
-              duration: 5000
-            }
-          );
-        }
+
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
       }
-    });
+    }, (error => {
+      console.log(error);
+      if (error.error.statusCode === 400 || error.error.statusCode === 503) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.BAD_REQUEST'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+      if (error.error.statusCode === 404) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.ERROR_CODE_NOT_VALID'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+      if (error.error.statusCode === 500) {
+        this.snackBar.open(
+          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+          this.translateService.instant('OK_BUTTON'),
+          {
+            duration: 5000
+          }
+        );
+      }
+    }));
 
   }
 }
