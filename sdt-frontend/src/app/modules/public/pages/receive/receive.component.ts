@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../../shared/components/modal/modal.component';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 
 @Component({
@@ -39,7 +40,9 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     private translateService: TranslateService,
     private snackBar: MatSnackBar,
     private changeDetectorRefs: ChangeDetectorRef,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private clipboard: Clipboard,
+    private snackbar: MatSnackBar
   ) {
     this.dataSource = new MatTableDataSource<DataElement>(ELEMENT_DATA);
 
@@ -124,7 +127,6 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     this.fileCode = this.websocketService.getSocket().fromEvent('code/files').subscribe((event: any) => {
       console.log(event);
-      // TODO implement try catch and error handling
       const newDataSource = [];
 
       event.files.forEach((file) => {
@@ -172,6 +174,10 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     return result;
   }
 
+  copyCode() {
+    this.clipboard.copy(this.code);
+    this.snackBar.open(this.translateService.instant('PAGES.RECEIVE.CODE_COPIED'), null, {duration: 5000});
+  }
 }
 
 export interface DataElement {

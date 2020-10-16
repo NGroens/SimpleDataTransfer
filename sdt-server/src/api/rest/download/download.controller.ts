@@ -14,7 +14,6 @@ export class DownloadController {
 
     @Get('/download/:code/:filename')
     downloadFile(@Res() res, @Param('code') code, @Param('filename') filename,): string {
-        // TODO download file from file object id and not code and filename
         const fs = require('fs');
         const filePath = this.configService.get('storagebackend.LOCAL_DIR') + '/' + code + '/' + filename;
         if (!fs.existsSync(filePath)) {

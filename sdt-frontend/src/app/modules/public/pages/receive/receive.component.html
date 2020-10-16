@@ -8,6 +8,10 @@
     <div fxLayout="column" fxLayoutAlign="space-around center" style="height: 100%">
 
       <qrcode [qrdata]="this.code" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+      <p class="copy-container"><span>{{'PAGES.RECEIVE.COPY_CODE' | translate}}</span>
+        <mat-icon class="pointer" matTooltip="{{'PAGES.RECEIVE.COPY_CODE_TOOLTIP' | translate}}"
+        [matTooltipPosition]="'above'" (click)="copyCode()">content_copy</mat-icon>
+      </p>
       <span>{{'PAGES.RECEIVE.YOUR_CODE' | translate}}</span>
       <code-input [isCodeHidden]="false"
                   [isNonDigitsCode]="false"
@@ -15,7 +19,8 @@
                   [code]="code"
       >
       </code-input>
-      <mat-table [dataSource]="dataSource" class="mat-elevation-z8"    matSort matSortActive="originalName" matSortDirection="asc" matSortDisableClear>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="originalName"
+                 matSortDirection="asc" matSortDisableClear>
 
         <!-- Original name Column -->
         <ng-container matColumnDef="originalName">
@@ -26,15 +31,16 @@
         <!-- Show Column -->
         <ng-container matColumnDef="show">
           <mat-header-cell *matHeaderCellDef> {{'PAGES.RECEIVE.TABLE.SHOW' | translate }}  </mat-header-cell>
-          <mat-cell  *matCellDef="let element">
+          <mat-cell *matCellDef="let element">
             <a *ngIf="element.typeRaw === 'text'" (click)="openModal(element.id)" class="pointer">{{element.show}}</a>
-            <a *ngIf="element.typeRaw === 'file'" href="{{element?.previewUrl}}" target="_blank"  class="pointer">{{element.show}}</a>
+            <a *ngIf="element.typeRaw === 'file'" href="{{element?.previewUrl}}" target="_blank"
+               class="pointer">{{element.show}}</a>
           </mat-cell>
         </ng-container>
         <!-- Show Column -->
         <ng-container matColumnDef="type">
           <mat-header-cell *matHeaderCellDef> {{'PAGES.RECEIVE.TABLE.TYPE' | translate }}  </mat-header-cell>
-          <mat-cell *matCellDef="let element" > {{element.type}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
         </ng-container>
 
         <!-- Date Column -->
@@ -47,7 +53,8 @@
         <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
       </mat-table>
-      <mat-paginator [length]="this.dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-paginator [length]="this.dataSource.data.length" [pageSize]="5"
+                     [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
     </div>
   </div>

@@ -27,31 +27,33 @@ import { MatInputModule } from '@angular/material/input';
 import { SendCodeComponent } from './pages/send-code/send-code.component';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent, SendCodeComponent],
-  imports: [
-    PublicRoutingModule,
-    TranslateModule,
-    MatGridListModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatButtonModule,
-    CommonModule,
-    MatRippleModule,
-    MatProgressSpinnerModule,
-    QRCodeModule,
-    CodeInputModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatIconModule,
-    ZXingScannerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatRadioModule
-  ],
+    imports: [
+        PublicRoutingModule,
+        TranslateModule,
+        MatGridListModule,
+        FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        CommonModule,
+        MatRippleModule,
+        MatProgressSpinnerModule,
+        QRCodeModule,
+        CodeInputModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        MatIconModule,
+        ZXingScannerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatRadioModule,
+        MatTooltipModule
+    ],
   providers: []
 })
 export class PublicModule {

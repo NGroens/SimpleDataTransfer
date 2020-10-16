@@ -6,6 +6,9 @@
     },
     "RECEIVE": {
       "YOUR_CODE": "Lassen Sie folgenden QR-Code scannen oder geben Sie folgenden Code weiter:",
+      "COPY_CODE": "Hier Code kopieren",
+      "COPY_CODE_TOOLTIP": "Code kopieren",
+      "CODE_COPIED": "Der Code wurde in die Zwischenablage kopiert",
       "ERROR": {
         "GET_TOKEN_FAILED": "Es konnte kein Code generiert werden. Laden Sie die Seite neu oder melden Sie sich bei dem Administrator der Webseite.",
         "INVALID_TOKEN": "Es ist ein Fehler beim wiederherstellen des gespeicherten Codes aufgetreten. Daher wurde ein neuer Code beantragt."
@@ -79,6 +82,9 @@
         "CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
         "ENTER_CODE_AGAIN_BUTTON": "Zurück"
       }
+    },
+    "CONNECT_ERROR": {
+      "ERROR_MESSAGE": "Bei der Verbindung zum Server ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Internetverbindung (Error-Code: 0502)"
     }
   },
   "OK_BUTTON": "Verstanden"

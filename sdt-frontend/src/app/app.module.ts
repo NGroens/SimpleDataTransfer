@@ -60,6 +60,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CodeInputModule } from 'angular-code-input';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ModalComponent } from './shared/components/modal/modal.component';
+import { ConnectErrorComponent } from './shared/components/connect-error/connect-error.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -70,7 +71,8 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalComponent
+    ModalComponent,
+    ConnectErrorComponent
   ],
   imports: [
     BrowserModule,
