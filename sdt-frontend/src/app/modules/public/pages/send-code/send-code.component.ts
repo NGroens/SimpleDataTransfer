@@ -75,6 +75,7 @@ export class SendCodeComponent implements OnInit, OnDestroy {
         });
       return;
     }
+    // value.text = value.text.replace(new RegExp('\n', 'g'), '<br />');
     this.apiService.sendText(this.code, value).subscribe((response: any) => {
       console.log(response);
       if (response.statusCode === 200) {
@@ -132,58 +133,58 @@ export class SendCodeComponent implements OnInit, OnDestroy {
       });
       return;
     }
-    // TODO check error handling when requested code is offline
-    this.apiService.uploadFiles(this.code, this.filesToUpload, formData.backendType).subscribe((response: any) => {
-      console.log('ERROR ehey');
-      console.log(response);
-      if (response.statusCode === 200) {
-        this.snackBar.open(
-          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.SUCCESS_SEND'),
-          null,
-          {
-            duration: 5000
-          });
-        sendFileForm.reset();
-      } else {
+    this.apiService.uploadFiles(this.code, this.filesToUpload, formData.backendType).subscribe(
+      (response: any) => {
+        console.log('ERROR ehey');
+        console.log(response);
+        if (response.statusCode === 200) {
+          this.snackBar.open(
+            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.SUCCESS_SEND'),
+            null,
+            {
+              duration: 5000
+            });
+          sendFileForm.reset();
+        } else {
 
-        this.snackBar.open(
-          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
-          this.translateService.instant('OK_BUTTON'),
-          {
-            duration: 5000
-          }
-        );
-      }
-    }, (error => {
-      console.log(error);
-      if (error.error.statusCode === 400 || error.error.statusCode === 503) {
-        this.snackBar.open(
-          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.BAD_REQUEST'),
-          this.translateService.instant('OK_BUTTON'),
-          {
-            duration: 5000
-          }
-        );
-      }
-      if (error.error.statusCode === 404) {
-        this.snackBar.open(
-          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.ERROR_CODE_NOT_VALID'),
-          this.translateService.instant('OK_BUTTON'),
-          {
-            duration: 5000
-          }
-        );
-      }
-      if (error.error.statusCode === 500) {
-        this.snackBar.open(
-          this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
-          this.translateService.instant('OK_BUTTON'),
-          {
-            duration: 5000
-          }
-        );
-      }
-    }));
+          this.snackBar.open(
+            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+            this.translateService.instant('OK_BUTTON'),
+            {
+              duration: 5000
+            }
+          );
+        }
+      }, (error => {
+        console.log(error);
+        if (error.error.statusCode === 400 || error.error.statusCode === 503) {
+          this.snackBar.open(
+            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.BAD_REQUEST'),
+            this.translateService.instant('OK_BUTTON'),
+            {
+              duration: 5000
+            }
+          );
+        }
+        if (error.error.statusCode === 404) {
+          this.snackBar.open(
+            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_FILE.MESSAGES.ERROR_CODE_NOT_VALID'),
+            this.translateService.instant('OK_BUTTON'),
+            {
+              duration: 5000
+            }
+          );
+        }
+        if (error.error.statusCode === 500) {
+          this.snackBar.open(
+            this.translateService.instant('PAGES.SEND.SEND_DATA.SEND_TEXT.MESSAGES.INTERNAL_SERVER_ERROR'),
+            this.translateService.instant('OK_BUTTON'),
+            {
+              duration: 5000
+            }
+          );
+        }
+      }));
 
   }
 }

@@ -33,7 +33,13 @@
               "src/styles.scss",
               "src/assets/css/grid.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "highlight.js",
+              "@zxing/library",
+              "qrcode",
+              "socket.io-client"
+            ]
           },
           "configurations": {
             "production": {

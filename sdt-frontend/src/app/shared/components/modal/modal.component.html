@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{'PAGES.RECEIVE.MODAL.TITLE' | translate}}</h1>
 <div mat-dialog-content>
-  {{data.text}}
+  <pre><code [highlight]="data.text" [lineNumbers]="true"></code></pre>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onNoClick()">{{'PAGES.RECEIVE.MODAL.CLOSE' | translate}}</button>

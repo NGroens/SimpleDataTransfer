@@ -159,7 +159,8 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(id);
 
     const dialogRef = this.dialog.open(ModalComponent, {
-      data: { text: this.localSavedText[id] }
+      data: { text: this.localSavedText[id] },
+      height: '80%'
     });
 
   }

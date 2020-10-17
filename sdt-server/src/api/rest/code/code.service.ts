@@ -63,7 +63,7 @@ export class CodeService implements OnModuleInit {
                     });
 
                     const upload = await this.uploadS3(file.buffer, this.configService.get('storagebackend.S3_DEFAULT_BUCKET'), code + '/' + fileName);
-                    const setPermissions = await this.addBuckerPermissions(
+                    const setPermissions = await this.addBucketPermissions(
                         code + '/' + fileName,
                         this.configService.get('storagebackend.S3_DEFAULT_BUCKET')
                     );
@@ -179,7 +179,6 @@ export class CodeService implements OnModuleInit {
             Body: file,
         };
         return new Promise((resolve, reject) => {
-            // TODO implement access management
             this.s3.upload(params, (err, data) => {
                 if (err) {
                     Logger.error(err);
@@ -191,7 +190,7 @@ export class CodeService implements OnModuleInit {
         });
     }
 
-    async addBuckerPermissions(principal, bucketName) {
+    async addBucketPermissions(principal, bucketName) {
         var readOnlyAnonUserPolicy = {
             Version: '2012-10-17',
             Statement: [
