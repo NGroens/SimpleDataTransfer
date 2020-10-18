@@ -62,6 +62,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { ConnectErrorComponent } from './shared/components/connect-error/connect-error.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -94,8 +95,8 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
     QRCodeModule,
     CodeInputModule,
     ZXingScannerModule,
-    HighlightModule
-
+    HighlightModule,
+    TextareaAutosizeModule
 
   ],
   providers: [

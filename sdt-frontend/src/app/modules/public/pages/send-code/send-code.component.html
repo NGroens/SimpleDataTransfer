@@ -17,14 +17,14 @@
 
 
 <div class="bootstrap-wrapper" *ngIf="!loading && !error">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row send-data-cards">
       <div class="col-12">
         <div>
           <h1>{{'PAGES.SEND.SEND_DATA.TITLE' | translate:titleParam }}</h1>
         </div>
       </div>
-      <mat-card class="col-12 col-md-5">
+      <mat-card class="col-12 col-md-6">
         <mat-card-header>{{'PAGES.SEND.SEND_DATA.SEND_FILE.TITLE' | translate}}</mat-card-header>
         <mat-card-content>
           <form (ngSubmit)="sendFile(sendFileForm.value, sendFileForm)" #sendFileForm="ngForm">
@@ -46,7 +46,7 @@
           </form>
         </mat-card-content>
       </mat-card>
-      <mat-card class="col-12 col-md-5">
+      <mat-card class="col-12 col-md-6">
         <mat-card-header>{{'PAGES.SEND.SEND_DATA.SEND_TEXT.TITLE' | translate }}</mat-card-header>
         <mat-card-content>
             <form (ngSubmit)="sendText(sendTextForm.value, sendTextForm)" #sendTextForm="ngForm">
@@ -58,7 +58,7 @@
               </mat-form-field>
               <mat-form-field appearance="outline" class="col-12">
                 <mat-label>{{'PAGES.SEND.SEND_DATA.SEND_TEXT.TEXT_FIELD' | translate }}</mat-label>
-                <textarea matInput name="text" ngModel required></textarea>
+                <textarea matInput name="text" rows="3" ngModel autosize required></textarea>
               </mat-form-field>
               <!--            <mat-form-field >-->
               <!--              <button mat-raised-button mat color="primary"  class="col-12">Primary</button>-->

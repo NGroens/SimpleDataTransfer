@@ -28,6 +28,7 @@ import { SendCodeComponent } from './pages/send-code/send-code.component';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent, SendCodeComponent],
@@ -52,7 +53,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatInputModule,
         FormsModule,
         MatRadioModule,
-        MatTooltipModule
+        MatTooltipModule,
+        TextareaAutosizeModule
     ],
   providers: []
 })

@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cf9f10c9-1e20-4be4-988e-add6cab30edc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdt-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdt-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/receive/receive.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send-code/send-code.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send-code/send-code.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send/send.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send/send.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/shared/components/modal/modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/shared/components/modal/modal.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/shared/components/modal/modal.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/shared/components/modal/modal.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send-code/send-code.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/pages/send-code/send-code.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/public.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sdt-frontend/src/app/modules/public/public.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +157,7 @@
       <workItem from="1602709518424" duration="1255000" />
       <workItem from="1602843247306" duration="6953000" />
       <workItem from="1602923200765" duration="4606000" />
+      <workItem from="1603026076219" duration="3039000" />
     </task>
     <servers />
   </component>
@@ -188,26 +184,26 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="740" y="269" key="FileChooserDialogImpl/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1599923721920" />
-    <state width="1877" height="275" key="GridCell.Tab.0.bottom" timestamp="1602959758546">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1326" height="219" key="GridCell.Tab.0.bottom" timestamp="1603037506061">
+      <screen x="0" y="40" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.bottom/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
-    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602959758546" />
-    <state width="1877" height="275" key="GridCell.Tab.0.center" timestamp="1602959758546">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1326" height="219" key="GridCell.Tab.0.bottom/0.40.1368.872@0.40.1368.872" timestamp="1603037506061" />
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1603026425189" />
+    <state width="1326" height="219" key="GridCell.Tab.0.center" timestamp="1603037506061">
+      <screen x="0" y="40" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.center/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
-    <state width="1877" height="275" key="GridCell.Tab.0.center/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602959758546" />
-    <state width="1877" height="275" key="GridCell.Tab.0.left" timestamp="1602959758546">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1326" height="219" key="GridCell.Tab.0.center/0.40.1368.872@0.40.1368.872" timestamp="1603037506061" />
+    <state width="1877" height="275" key="GridCell.Tab.0.center/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1603026425189" />
+    <state width="1326" height="219" key="GridCell.Tab.0.left" timestamp="1603037506061">
+      <screen x="0" y="40" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.left/0.40.1368.872@0.40.1368.872" timestamp="1600954736294" />
-    <state width="1877" height="275" key="GridCell.Tab.0.left/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602959758546" />
-    <state width="1877" height="275" key="GridCell.Tab.0.right" timestamp="1602959758546">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state width="1326" height="219" key="GridCell.Tab.0.left/0.40.1368.872@0.40.1368.872" timestamp="1603037506061" />
+    <state width="1877" height="275" key="GridCell.Tab.0.left/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1603026425189" />
+    <state width="1326" height="219" key="GridCell.Tab.0.right" timestamp="1603037506061">
+      <screen x="0" y="40" width="1368" height="872" />
     </state>
-    <state width="1326" height="227" key="GridCell.Tab.0.right/0.40.1368.872@0.40.1368.872" timestamp="1600954736295" />
-    <state width="1877" height="275" key="GridCell.Tab.0.right/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1602959758546" />
+    <state width="1326" height="219" key="GridCell.Tab.0.right/0.40.1368.872@0.40.1368.872" timestamp="1603037506061" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right/0.40.1920.1040/1920.40.1920.1040/-2498.0.2498.1080@0.40.1920.1040" timestamp="1603026425189" />
     <state x="622" y="178" key="NewModule_or_Project.wizard" timestamp="1599923727298">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
