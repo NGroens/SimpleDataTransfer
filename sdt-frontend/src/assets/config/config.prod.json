@@ -1,0 +1,15 @@
+{
+  "env": {
+    "name": "PROD",
+    "socketIOEndpoint": "http://api.sdf.mycoding.systems",
+    "apiEndpoint": "http://api.sdf.mycoding.systems/api"
+  },
+  "header": {
+    "appName": "SimpleDataTransfer"
+  },
+  "footer": {
+    "copyrightString": "&copy; 2020%year% <a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank' style='margin-left: 0.3rem'> NGroens</a>",
+    "showPoweredBy": true,
+    "showVersion": true
+  }
+}

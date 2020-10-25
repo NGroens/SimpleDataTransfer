@@ -1,0 +1,99 @@
+<ng-container *ngIf="!chooseOption">
+  <mat-card>
+    <mat-card-header>
+      <div class="back pointer" (click)="this.router.navigate(['/public'])">
+
+        <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+        <span>{{'PAGES.SEND.ARROW_BACK_SELECT_OPTION' |translate}}</span>
+      </div>
+    </mat-card-header>
+  </mat-card>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column">
+    <mat-card matRipple class="option pointer" (click)="chooseOption = 'scan'; showQRCodeReader()">
+      <span>{{'PAGES.SEND.CHOOSE_OPTION.SCAN' | translate }} </span></mat-card>
+    <mat-card matRipple class="option pointer" (click)="chooseOption = 'input'">
+      <span>{{'PAGES.SEND.CHOOSE_OPTION.INPUT' | translate }} </span></mat-card>
+  </div>
+</ng-container>
+
+<!--    <mat-card class="code-card">-->
+<!--      <mat-card-header></mat-card-header>-->
+<!--    </mat-card>-->
+<div class="bootstrap-wrapper"  *ngIf="chooseOption">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <mat-card>
+          <mat-card-header>
+            <div class="back pointer" (click)="chooseOption = null">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+              <span>{{'PAGES.SEND.ARROW_BACK' |translate}}</span>
+            </div>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div *ngIf="chooseOption == 'scan'">
+              <div class="bootstrap-wrapper">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div *ngIf="scannerLoading">
+                        <div fxLayout="column" fxLayoutAlign="space-around center">
+                          <mat-spinner></mat-spinner>
+                          <br>
+                          {{this.scannerState}}
+                        </div>
+                      </div>
+                      <div *ngIf="scannerError">
+                        <div fxLayout="column" fxLayoutAlign="space-around center">
+                          <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span
+                            class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span
+                            class="swal2-x-mark-line-right"></span></span></div>
+                          <br>
+                          {{this.scannerState}}
+                        </div>
+                      </div>
+                  <div *ngIf="!scannerError && !scannerLoading">
+                    {{'PAGES.SEND.SCAN.SELECT_DEVICE' | translate}}
+                    <mat-form-field appearance="fill" style="width: 100%">
+                      <select matNativeControl matInput (change)="onDeviceSelectChange($event.target.value)">
+                        <option value="" [selected]="!currentDevice">  {{'PAGES.SEND.SCAN.NO_DEVICE_SELECTED' | translate}}</option>
+                        <option *ngFor="let device of availableDevices" [value]="device.deviceId"
+                                [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{device.label}}</option>
+                      </select>
+                    </mat-form-field>
+                  </div>
+                      <zxing-scanner [formats]="['QR_CODE']"
+                                     [torch]="true" [(device)]="currentDevice" (scanSuccess)="onCodeResult($event)"
+                                     (camerasFound)="onCamerasFound($event)"
+
+                      ></zxing-scanner>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div *ngIf="chooseOption == 'input'">
+              <div class="bootstrap-wrapper">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>{{'PAGES.SEND.ENTER_CODE' | translate}}</p>
+                      <code-input [isCodeHidden]="false"
+                                  [isNonDigitsCode]="false"
+                                  [codeLength]="10"
+                                  (codeCompleted)="onCodeCompleted($event)"
+                      ></code-input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

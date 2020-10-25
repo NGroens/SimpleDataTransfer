@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+  <span class="app-name">{{getAppConfig()?.settings.header.appName}}</span>
+  <span class="menu-icon"><mat-icon matRipple class="pointer" (click)="sidenav.toggle()">menu</mat-icon></span>
+  <span class="fill-remaining-space"></span>
+  <mat-form-field>
+    <mat-label>{{'LANGUAGE' | translate}}</mat-label>
+    <mat-select (selectionChange)="this.app.changeLanguage($event)" [value]="this.app.usersLanguage">
+      <mat-option *ngFor="let lang of this.app.translate.getLangs()" [value]="lang">
+        {{'LANGUAGES.' + lang.toUpperCase() | translate}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button matTooltip="{{'DESIGN.SWITCH_DARK' | translate}}"
+          (click)="this.colorSchemeService.update('dark')" *ngIf="this.colorSchemeService.currentActive() == 'light'">
+    <mat-icon>brightness_3</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="{{'DESIGN.SWITCH_LIGHT' | translate}}"
+          (click)="this.colorSchemeService.update('light')" *ngIf="this.colorSchemeService.currentActive() == 'dark'">
+    <mat-icon>wb_sunny</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container (backdropClick)="close('backdrop')" autosize>
+  <mat-sidenav #sidenav (keydown.escape)="close('escape')">
+    <mat-nav-list>
+      <mat-list-item> {{getAppConfig()?.settings.header.appName}}</mat-list-item>
+      <mat-list-item>
+        <mat-form-field>
+          <mat-label>{{'LANGUAGE' | translate}}</mat-label>
+          <mat-select (selectionChange)="this.app.changeLanguage($event)" [value]="this.app.usersLanguage">
+            <mat-option *ngFor="let lang of this.app.translate.getLangs()" [value]="lang">
+              {{'LANGUAGES.' + lang.toUpperCase() | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-list-item (click)="this.colorSchemeService.toggle()">
+        <button mat-icon-button matTooltip="{{'DESIGN.SWITCH_DARK' | translate}}"
+
+                *ngIf="this.colorSchemeService.currentActive() == 'light'">
+          <mat-icon>brightness_3</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="{{'DESIGN.SWITCH_LIGHT' | translate}}"
+
+                *ngIf="this.colorSchemeService.currentActive() == 'dark'">
+          <mat-icon>wb_sunny</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-card class="footer">
+  <mat-card-content style="display: flex; justify-content: center; align-content: center">
+    <span class="copyright" [innerHTML]="getFormattedCopyrightText()"> </span> <span
+    *ngIf="getAppConfig()?.settings.footer.showPoweredBy"> | Powered by <a
+    href="http://github.mycoding.systems/SimpleDataTransfer" class="link-color "
+    target="_blank"> SimpleDataTransfer</a></span>
+    <span class="version" *ngIf="getAppConfig()?.settings.footer.showVersion"> | <mat-icon class="icon-spin">settings</mat-icon>
+      {{'FOOTER.VERSION' | translate:versionParams}}</span>
+  </mat-card-content>
+</mat-card>

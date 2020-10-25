@@ -1,0 +1,107 @@
+{
+  "LANGUAGE": "Sprache",
+  "LANGUAGES": {
+    "DE": "Deutsch",
+    "EN": "Englisch"
+  },
+  "DESIGN": {
+    "SWITCH_DARK": "Dunkler Modus",
+    "SWITCH_LIGHT": "Heller Modus"
+  },
+  "FOOTER": {
+    "VERSION": "Version: {{version}}"
+  },
+  "PAGES": {
+    "CHOOSE": {
+      "SEND": "Daten senden",
+      "RECEIVE": "Daten empfangen"
+    },
+    "RECEIVE": {
+      "YOUR_CODE": "Lassen Sie folgenden QR-Code scannen oder geben Sie folgenden Code weiter:",
+      "COPY_CODE": "Hier Code kopieren",
+      "COPY_CODE_TOOLTIP": "Code kopieren",
+      "CODE_COPIED": "Der Code wurde in die Zwischenablage kopiert",
+      "ERROR": {
+        "GET_TOKEN_FAILED": "Es konnte kein Code generiert werden. Laden Sie die Seite neu oder melden Sie sich bei dem Administrator der Webseite.",
+        "INVALID_TOKEN": "Es ist ein Fehler beim wiederherstellen des gespeicherten Codes aufgetreten. Daher wurde ein neuer Code beantragt."
+      },
+      "TABLE": {
+        "TITLE": "Titel",
+        "SHOW": "Anzeigen",
+        "DATE": "Datum",
+        "TYPE": "Typ"
+      },
+      "INCOMING_TEXT": {
+        "SHOW": "Text zeigen",
+        "TYPE_TEXT": "Text"
+      },
+      "INCOMING_FILE": {
+        "SHOW": "Datei öffnen",
+        "TYPE_FILE": "Datei"
+      },
+      "MODAL": {
+        "TITLE": "Text anzeigen.",
+        "CLOSE": "Schließen"
+      }
+    },
+    "SEND": {
+      "ARROW_BACK": "Andere Methode auswählen.",
+      "ARROW_BACK_SELECT_OPTION": "Zurück",
+      "CHOOSE_OPTION": {
+        "SCAN": "QR-Code scannen",
+        "INPUT": "Code eingeben"
+      },
+      "SCAN": {
+        "SELECT_DEVICE": "Wählen Sie ein Gerät aus.",
+        "NO_DEVICE_SELECTED": "Kein Gerät ausgewählt",
+        "STATE_MESSAGES": {
+          "START": "QR-Code scanner läd...",
+          "ASK_PERMISSION": "Es wird nach der Berechtigung für die Kamera gefragt. Bitte lassen Sie diese Berechtigung zu.",
+          "NO_PERMISSIONS": "Sie haben die Kamera-Nutzung nicht erlaubt. Bitte erlauben Sie diese oder wählen Sie zurück und geben stattdessen den Code per Hand ein."
+        },
+        "ENTER_CODE": "Bitte geben Sie den Code ein, den Sie erhalten haben.",
+        "MESSAGES": {
+          "CODE_SCANNED": "Ein Code wurde gefunden. Sie können nun Daten senden."
+        }
+      },
+      "SEND_DATA": {
+        "TITLE": "Ihr eingegebener Code lautet: {{code}}",
+        "SEND_FILE": {
+          "TITLE": "Dateien senden",
+          "SEND_BUTTON": "Datei(en) jetzt teilen.",
+          "S3_OPTION": "Auf S3 speichern.",
+          "LOCAL_OPTION": "Local speichern.",
+          "MESSAGES": {
+            "SUCCESS_SEND": "Der Dateien wurden erfolgreich gesendet.",
+            "ERROR_CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
+            "BAD_REQUEST": "Bei der Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
+            "INTERNAL_SERVER_ERROR": "Es ist ein Server-Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
+            "ENTER_BACKENDTYPE": "Bitte wählen Sie ein Backend-Type aus."
+          }
+        },
+        "SEND_TEXT": {
+          "TITLE": "Text senden",
+          "TITLE_FIELD": "Titel des Textes",
+          "TEXT_FIELD": "Text",
+          "SEND_BUTTON": "Text jetzt senden",
+          "MESSAGES": {
+            "SUCCESS_SEND": "Der Text wurde erfolgreich gesendet.",
+            "ERROR_CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
+            "BAD_REQUEST": "Bei der Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
+            "INTERNAL_SERVER_ERROR": "Es ist ein Server-Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
+            "INSERT_ALL_DATA": "Bitte füllen Sie alle Felder aus."
+          }
+        }
+      },
+      "MESSAGES": {
+        "CHECK_ENTERED_CODE": "Der Code wird geprüft...",
+        "CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
+        "ENTER_CODE_AGAIN_BUTTON": "Zurück"
+      }
+    },
+    "CONNECT_ERROR": {
+      "ERROR_MESSAGE": "Bei der Verbindung zum Server ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Internetverbindung (Error-Code: 0502)"
+    }
+  },
+  "OK_BUTTON": "Verstanden"
+}

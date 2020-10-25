@@ -1,0 +1,35 @@
+version: '2'
+services:
+  mongodb:
+    image: 'docker.io/bitnami/mongodb:4.4-debian-10'
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_DATABASE=sdt-dev
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+  redis:
+    image: 'docker.io/bitnami/redis:6.0-debian-10'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/bitnami/redis/data'
+  minio:
+    image: 'docker.io/minio/minio'
+    environment:
+      - MINIO_ACCESS_KEY=CHANGE_ME
+      - MINIO_SECRET_KEY=CHANGE_ME
+    ports:
+      - '9000:9000'
+    volumes:
+      - 'minio_data:/data'
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
