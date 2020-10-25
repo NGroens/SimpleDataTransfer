@@ -1,4 +1,4 @@
-import {Injectable, Renderer2, RendererFactory2} from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +51,17 @@ export class ColorSchemeService {
   update(scheme) {
     this._setColorScheme(scheme);
     // Remove the old color-scheme class
-    this.renderer.removeClass( document.body, this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark') );
+    this.renderer.removeClass(document.body, this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark'));
     // Add the new / current color-scheme class
     this.renderer.addClass(document.body, this.colorSchemePrefix + scheme);
+  }
+
+  toggle() {
+    if (this.currentActive() === 'dark') {
+      this.update('light');
+    } else {
+      this.update('dark');
+    }
   }
 
   currentActive() {

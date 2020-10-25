@@ -9,7 +9,7 @@
     </mat-card-header>
   </mat-card>
 
-  <div fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayout.xs="column">
     <mat-card matRipple class="option pointer" (click)="chooseOption = 'scan'; showQRCodeReader()">
       <span>{{'PAGES.SEND.CHOOSE_OPTION.SCAN' | translate }} </span></mat-card>
     <mat-card matRipple class="option pointer" (click)="chooseOption = 'input'">
@@ -39,14 +39,14 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div *ngIf="scannerLoading">
-                        <div fxLayout="column" fxLayoutAlign="space-around center" style="height: 100%">
+                        <div fxLayout="column" fxLayoutAlign="space-around center">
                           <mat-spinner></mat-spinner>
                           <br>
                           {{this.scannerState}}
                         </div>
                       </div>
                       <div *ngIf="scannerError">
-                        <div fxLayout="column" fxLayoutAlign="space-around center" style="height: 100%">
+                        <div fxLayout="column" fxLayoutAlign="space-around center">
                           <div class="swal2-icon swal2-error swal2-animate-error-icon" style="display: flex;"><span
                             class="swal2-x-mark"><span class="swal2-x-mark-line-left"></span><span
                             class="swal2-x-mark-line-right"></span></span></div>

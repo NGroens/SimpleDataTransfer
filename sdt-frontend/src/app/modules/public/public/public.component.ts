@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebsocketService } from '../../../core/services/websocket.service';
+import { AppComponent } from '../../../app.component';
+import { ColorSchemeService } from '../../../core/services/color-scheme.service';
+import { AppConfig } from '../../../core/config/app.config';
+import { environment } from '../../../../environments/environment';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-public',
@@ -8,12 +13,32 @@ import { WebsocketService } from '../../../core/services/websocket.service';
 })
 export class PublicComponent implements OnInit {
 
-  constructor(private websocketService: WebsocketService) {
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+
+  constructor(
+    private websocketService: WebsocketService,
+    public app: AppComponent,
+    public colorSchemeService: ColorSchemeService
+  ) {
   }
 
   ngOnInit() {
     this.websocketService.getSocket().connect();
   }
 
+
+  getAppConfig() {
+    return AppConfig;
+  }
+
+  getEnv() {
+    return environment;
+  }
+
+
+  close(reason: string) {
+    this.sidenav.close();
+  }
 
 }

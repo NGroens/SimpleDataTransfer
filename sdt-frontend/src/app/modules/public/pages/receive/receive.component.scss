@@ -9,3 +9,6 @@ mat-table, mat-paginator {
   display: flex;
   align-items: center;
 }
+code-input {
+  pointer-events: none !important;
+}

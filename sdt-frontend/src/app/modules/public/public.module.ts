@@ -29,33 +29,41 @@ import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [PublicComponent, ChooseComponent, SendComponent, ReceiveComponent, SendCodeComponent],
-    imports: [
-        PublicRoutingModule,
-        TranslateModule,
-        MatGridListModule,
-        FlexLayoutModule,
-        MatCardModule,
-        MatButtonModule,
-        CommonModule,
-        MatRippleModule,
-        MatProgressSpinnerModule,
-        QRCodeModule,
-        CodeInputModule,
-        MatTableModule,
-        MatSortModule,
-        MatPaginatorModule,
-        MatIconModule,
-        ZXingScannerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatRadioModule,
-        MatTooltipModule,
-        TextareaAutosizeModule
-    ],
+  imports: [
+    PublicRoutingModule,
+    TranslateModule,
+    MatGridListModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatButtonModule,
+    CommonModule,
+    MatRippleModule,
+    MatProgressSpinnerModule,
+    QRCodeModule,
+    CodeInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatIconModule,
+    ZXingScannerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatRadioModule,
+    MatTooltipModule,
+    TextareaAutosizeModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatListModule
+  ],
   providers: []
 })
 export class PublicModule {
