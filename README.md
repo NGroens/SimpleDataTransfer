@@ -157,5 +157,5 @@ Project Link: [https://github.com/NGroens/SimpleDataTransfer](https://github.com
 [issues-shield]: https://img.shields.io/github/issues/NGroens/SimpleDataTransfer.svg?style=flat-square
 [issues-url]: https://github.com/NGroens/SimpleDataTransfer/issues
 [license-shield]: https://img.shields.io/github/license/NGroens/SimpleDataTransfer.svg?style=flat-square
-[license-url]: https://github.com/NGroens/SimpleDataTransfer/blob/master/LICENSE.txt
+[license-url]: https://github.com/NGroens/SimpleDataTransfer/blob/master/LICENSE
 [product-screenshot]: docs/screenshots/choose-send-or-receive.png
