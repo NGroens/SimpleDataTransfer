@@ -59,6 +59,7 @@
           "ASK_PERMISSION": "Es wird nach der Berechtigung für die Kamera gefragt. Bitte lassen Sie diese Berechtigung zu.",
           "NO_PERMISSIONS": "Sie haben die Kamera-Nutzung nicht erlaubt. Bitte erlauben Sie diese oder wählen Sie zurück und geben stattdessen den Code per Hand ein."
         },
+        "ENTER_CODE": "Bitte geben Sie den Code ein, den Sie erhalten haben.",
         "MESSAGES": {
           "CODE_SCANNED": "Ein Code wurde gefunden. Sie können nun Daten senden."
         }

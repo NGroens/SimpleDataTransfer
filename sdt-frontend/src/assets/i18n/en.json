@@ -60,6 +60,7 @@
           "CODE_SCANNED": "A code was found. You can now send data."
         }
       },
+      "ENTER_CODE": "Please enter the code you have got.",
       "SEND_DATA": {
         "TITLE": "Your entered code is: {{code}}",
         "SEND_FILE": {
