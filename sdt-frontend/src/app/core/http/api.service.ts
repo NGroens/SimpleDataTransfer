@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AppConfig } from '../config/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ApiService {
    * @param body
    */
   sendText(code, body) {
-    return this.http.post(environment.apiEndpoint + '/code/' + code + '/text', body);
+    return this.http.post(AppConfig.settings.env.apiEndpoint + '/code/' + code + '/text', body);
   }
 
   uploadFiles(code, files, backendType) {
@@ -27,6 +28,6 @@ export class ApiService {
       formData.append('files', file, file.name);
     }
 
-    return this.http.post<any>(environment.apiEndpoint + '/code/' + code + '/files?backendType=' + backendType, formData);
+    return this.http.post<any>(AppConfig.settings.env.apiEndpoint + '/code/' + code + '/files?backendType=' + backendType, formData);
   }
 }

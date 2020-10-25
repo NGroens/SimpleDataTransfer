@@ -1,0 +1,15 @@
+{
+  "env": {
+    "name": "PROD",
+    "socketIOEndpoint": "http://api.sdf.mycoding.systems",
+    "apiEndpoint": "http://api.sdf.mycoding.systems/api"
+  },
+  "header": {
+    "appName": "SimpleDataTransfer"
+  },
+  "footer": {
+    "copyrightString": "&copy; 2020%year% NGroens",
+    "showPoweredBy": true,
+    "showLogin": true
+  }
+}

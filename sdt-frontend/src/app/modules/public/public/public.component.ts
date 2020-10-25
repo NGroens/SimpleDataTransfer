@@ -11,7 +11,7 @@ export class PublicComponent implements OnInit {
   constructor(private websocketService: WebsocketService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.websocketService.getSocket().connect();
   }
 

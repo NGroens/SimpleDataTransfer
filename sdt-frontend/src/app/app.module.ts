@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,8 +53,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatCardModule } from '@angular/material/card';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
-import { environment } from '../environments/environment';
 import { WebsocketService } from './core/services/websocket.service';
 import { QRCodeModule } from 'angularx-qrcode';
 import { CodeInputModule } from 'angular-code-input';
@@ -63,19 +61,32 @@ import { ModalComponent } from './shared/components/modal/modal.component';
 import { ConnectErrorComponent } from './shared/components/connect-error/connect-error.component';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { FooterComponent } from './core/footer/footer.component';
+import { AppConfig } from './core/config/app.config';
+import { SocketIoModule } from 'ngx-socket-io';
+import { SocketOne } from './SocketOne';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
-const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} };
+export function initializeApp(appConfig: AppConfig) {
+  return () => appConfig.load();
+}
+
+export function initializeSocket(appConfig: AppConfig, ) {
+  return () => null;
+}
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
-    ConnectErrorComponent
+    ConnectErrorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -90,13 +101,60 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
         deps: [HttpClient]
       }
     }),
+    SocketIoModule,
     FlexLayoutModule,
-    SocketIoModule.forRoot(config),
     QRCodeModule,
     CodeInputModule,
     ZXingScannerModule,
     HighlightModule,
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    TranslateModule,
+    FlexLayoutModule,
+    A11yModule,
+    ClipboardModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatTreeModule,
+    OverlayModule,
+    PortalModule,
+    ScrollingModule,
+    MatToolbarModule,
+
 
   ],
   providers: [
@@ -107,7 +165,15 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
       useValue: {
         fullLibraryLoader: () => import('highlight.js'),
       }
-    }
+    },
+    AppConfig,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfig], multi: true
+    },
+    SocketOne
+
   ],
   bootstrap: [AppComponent],
   exports: [
@@ -151,7 +217,6 @@ const config: SocketIoConfig = { url: environment.socketIOEndpoint, options: {} 
     MatSortModule,
     MatTableModule,
     MatTabsModule,
-    MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
     OverlayModule,

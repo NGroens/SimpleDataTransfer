@@ -1,5 +1,15 @@
 <ng-container *ngIf="!chooseOption">
-  <div fxLayout="row" fxLayoutAlign="center center" style="height: 100%">
+  <mat-card>
+    <mat-card-header>
+      <div class="back pointer" (click)="this.router.navigate(['/public'])">
+
+        <mat-icon aria-hidden="false" aria-label="Example home icon">arrow_back</mat-icon>
+        <span>{{'PAGES.SEND.ARROW_BACK_SELECT_OPTION' |translate}}</span>
+      </div>
+    </mat-card-header>
+  </mat-card>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
     <mat-card matRipple class="option pointer" (click)="chooseOption = 'scan'; showQRCodeReader()">
       <span>{{'PAGES.SEND.CHOOSE_OPTION.SCAN' | translate }} </span></mat-card>
     <mat-card matRipple class="option pointer" (click)="chooseOption = 'input'">
@@ -10,7 +20,7 @@
 <!--    <mat-card class="code-card">-->
 <!--      <mat-card-header></mat-card-header>-->
 <!--    </mat-card>-->
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper"  *ngIf="chooseOption">
   <div class="container">
     <div class="row">
       <div class="col-12">

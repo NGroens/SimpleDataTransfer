@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
+import { SocketOne } from '../../SocketOne';
 
 
 @Injectable()
 export class WebsocketService {
 
   constructor(
-    private socket: Socket,
+    private socket: SocketOne,
     private router: Router) {
-    socket.on('connect_error', err => this.handleConnectError(err));
-    socket.on('connect_failed', err => this.handleConnectError(err));
-
+    this.socket.on('connect_error', err => this.handleConnectError(err));
+    this.socket.on('connect_failed', err => this.handleConnectError(err));
   }
 
 
@@ -30,5 +30,7 @@ export class WebsocketService {
   handleConnectError(err: any) {
     this.router.navigate(['/connect-error']);
   }
+
+
 
 }

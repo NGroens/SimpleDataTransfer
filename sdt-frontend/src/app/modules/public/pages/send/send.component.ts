@@ -23,7 +23,7 @@ export class SendComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private translateService: TranslateService,
-    private router: Router
+    public router: Router
   ) {
   }
 

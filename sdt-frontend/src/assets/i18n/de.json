@@ -1,4 +1,13 @@
 {
+  "LANGUAGE": "Sprache",
+  "LANGUAGES": {
+    "DE": "Deutsch",
+    "EN": "Englisch"
+  },
+  "DESIGN": {
+    "SWITCH_DARK": "Dunkler Modus",
+    "SWITCH_LIGHT": "Heller Modus"
+  },
   "PAGES": {
     "CHOOSE": {
       "SEND": "Daten senden",
@@ -34,6 +43,7 @@
     },
     "SEND": {
       "ARROW_BACK": "Andere Methode auswählen.",
+      "ARROW_BACK_SELECT_OPTION": "Zurück",
       "CHOOSE_OPTION": {
         "SCAN": "QR-Code scannen",
         "INPUT": "Code eingeben"
@@ -75,7 +85,7 @@
             "ERROR_CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
             "BAD_REQUEST": "Bei der Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
             "INTERNAL_SERVER_ERROR": "Es ist ein Server-Fehler aufgetreten. Bitte versuchen Sie es erneut oder melden Sie sich bei dem Website-Administrator",
-            "INSERT_ALL_DATA": "Bitte füllen Sie alle felder aus."
+            "INSERT_ALL_DATA": "Bitte füllen Sie alle Felder aus."
           }
         }
       },
