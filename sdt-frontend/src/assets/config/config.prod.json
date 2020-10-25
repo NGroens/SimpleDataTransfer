@@ -8,8 +8,8 @@
     "appName": "SimpleDataTransfer"
   },
   "footer": {
-    "copyrightString": "&copy; 2020%year% NGroens",
+    "copyrightString": "&copy; 2020%year% <a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank' style='margin-left: 0.3rem'> NGroens</a>",
     "showPoweredBy": true,
-    "showLogin": true
+    "showVersion": true
   }
 }

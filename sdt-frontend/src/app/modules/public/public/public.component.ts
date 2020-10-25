@@ -14,6 +14,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class PublicComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
+  versionParams = {
+    version: environment.version + '-' + environment.version_state
+  };
 
 
   constructor(
@@ -34,6 +37,17 @@ export class PublicComponent implements OnInit {
 
   getEnv() {
     return environment;
+  }
+
+  getFormattedCopyrightText() {
+    if (new Date().getFullYear() === 2020) {
+      return this.getAppConfig().settings.footer.copyrightString.replace('%year%', '');
+
+    } else {
+      return this.getAppConfig().settings.footer.copyrightString.replace('%year%', '-' + new Date().getFullYear());
+
+    }
+
   }
 
 

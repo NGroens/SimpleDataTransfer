@@ -10,6 +10,6 @@ export interface IAppConfig {
   footer: {
     copyrightString: string;
     showPoweredBy: boolean;
-    showLogin: boolean;
+    showVersion: boolean;
   };
 }

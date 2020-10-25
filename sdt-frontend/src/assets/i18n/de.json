@@ -8,6 +8,9 @@
     "SWITCH_DARK": "Dunkler Modus",
     "SWITCH_LIGHT": "Heller Modus"
   },
+  "FOOTER": {
+    "VERSION": "Version: {{version}}"
+  },
   "PAGES": {
     "CHOOSE": {
       "SEND": "Daten senden",

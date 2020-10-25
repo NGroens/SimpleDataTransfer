@@ -15,17 +15,17 @@ body {
   .mat-toolbar .mat-form-field, a {
     display: none !important;
   }
-  .mat-toolbar{
-    .app-name{
-      display: none!important;
+  .mat-toolbar {
+    .app-name {
+      display: none !important;
     }
   }
 }
 
 @media(min-width: 427px) {
-  .mat-toolbar{
-    .menu-icon{
-      display: none!important;
+  .mat-toolbar {
+    .menu-icon {
+      display: none !important;
     }
   }
 }
@@ -42,6 +42,7 @@ body {
     }
 
   }
+
   .mat-form-field-label {
     display: none !important;
   }
@@ -3133,10 +3134,82 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     --color: white;
   }
 
+  .link-color {
+    color: white;
+    text-decoration: none;
+  }
+
 }
 
 .color-scheme-light {
   code-input {
     --color: black;
   }
+
+  .link-color {
+    color: black;
+    text-decoration: none;
+  }
 }
+
+.icon-spin {
+  -webkit-animation: icon-spin 2s infinite linear;
+  animation: icon-spin 2s infinite linear;
+}
+
+.icon-pulse {
+  -webkit-animation: icon-spin 1s infinite steps(8);
+  animation: icon-spin 1s infinite steps(8);
+}
+
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.footer {
+  position: fixed!important;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+
+  span {
+    margin-right: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    a{
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+    }
+  }
+  .version{
+    mat-icon{
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+      width: 1rem;
+      height: 1rem;
+      font-size: 1rem;
+    }
+  }
+.project-developer{
+  margin-left: 0.3rem;
+}
+}
+
