@@ -1,12 +1,10 @@
-<div align="center">
-  <h3 align="center">SimpleDataTransfer</h3>
-</div>
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 <div align="center">
+  <h3 align="center">SimpleDataTransfer</h3>
   <p align="center">
     SimpleDataTransfer is a web application with which you can easily send files and text with a QR code or pin. I started this project for fun to get some experience with nestJS. If you have suggestions for improvements of the code or ideas for new features just open an issue.
     <br />
