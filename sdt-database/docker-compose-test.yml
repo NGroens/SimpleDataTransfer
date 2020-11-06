@@ -1,11 +1,5 @@
 version: '2'
 services:
-  mongodb:
-    image: 'docker.io/bitnami/mongodb:4.4-debian-10'
-    environment:
-      - MONGODB_DATABASE=sdt
-    volumes:
-      - 'mongodb_data:/bitnami/mongodb'
   redis:
     image: 'docker.io/bitnami/redis:6.0-debian-10'
     environment:
@@ -13,31 +7,43 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     volumes:
       - 'redis_data:/bitnami/redis/data'
-  minio:
-    image: 'docker.io/minio/minio'
+  mongodb:
+    image: 'docker.io/bitnami/mongodb:4.4-debian-10'
     environment:
-      - MINIO_ACCESS_KEY=CHANGE_ME
-      - MINIO_SECRET_KEY=CHANGE_ME
+      - MONGODB_DATABASE=sdt
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+  minio:
+    image: 'minio/minio'
+    environment:
+      - MINIO_ACCESS_KEY=MY_ACCESS_KEY
+      - MINIO_SECRET_KEY=MY_SECRET_KEY
+    command: 'server /data'
     ports:
       - '9000:9000'
     volumes:
       - 'minio_data:/data'
   sdf_server:
     image: 'docker.io/groens/sdf-server'
+    depends_on:
+      - "redis"   
+      - "mongodb"               
+      - "minio"               
+            
     environment:
       - MONGODB_HOST=mongodb
       - MONGODB_PORT=27017
-      - MONGODB_USERNAME=sdf
-      - MONGODB_PASSWORD=sdfpw
+#      - MONGODB_USERNAME=sdf
+#      - MONGODB_PASSWORD=sdfpw
       - MONGODB_DATABASE=sdf
       - EXPRESS_PORT=3000
       - REDIS_HOST=redis
-      - REDIS_PORT=6397
-      - REDIS_USERNAME=redis
-      - REDIS_PASSWORD=redispw
+#      - REDIS_PORT=6397
+#      - REDIS_USERNAME=redis
+#      - REDIS_PASSWORD=redispw
       - SECURITY_SECRET=MY_SECURITY_SECRET
       - SECURITY_EXPIRES_IN=30d
-      - S3_END_POINT=http://192.168.17.33:9000
+      - S3_END_POINT=http://minio:9000
       - S3_ACCESS_KEY=MY_ACCESS_KEY
       - S3_SECRET_KEY=MY_SECRET_KEY
       - S3_FORCE_PATH_STYLE=true
