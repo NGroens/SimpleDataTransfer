@@ -2,7 +2,8 @@
   "env": {
     "name": "PROD",
     "socketIOEndpoint": "http://api.sdf.mycoding.systems",
-    "apiEndpoint": "http://api.sdf.mycoding.systems/api"
+    "apiEndpoint": "http://api.sdf.mycoding.systems/api",
+    "demo": false
   },
   "header": {
     "appName": "SimpleDataTransfer"

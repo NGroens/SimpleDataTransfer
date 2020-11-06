@@ -5,6 +5,8 @@ import { ColorSchemeService } from '../../../core/services/color-scheme.service'
 import { AppConfig } from '../../../core/config/app.config';
 import { environment } from '../../../../environments/environment';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog } from '@angular/material/dialog';
+import { DemoModeComponent } from '../../../shared/components/demo-mode/demo-mode.component';
 
 @Component({
   selector: 'app-public',
@@ -22,12 +24,21 @@ export class PublicComponent implements OnInit {
   constructor(
     private websocketService: WebsocketService,
     public app: AppComponent,
-    public colorSchemeService: ColorSchemeService
+    public colorSchemeService: ColorSchemeService,
+    public dialog: MatDialog,
+
   ) {
   }
 
   ngOnInit() {
     this.websocketService.getSocket().connect();
+
+    if (AppConfig.settings.env.demo) {
+      console.log('Application started in demo mode');
+      const dialogRef = this.dialog.open(DemoModeComponent, {
+        height: '80%'
+      });
+    }
   }
 
 

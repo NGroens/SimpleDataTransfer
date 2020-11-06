@@ -101,6 +101,11 @@
     },
     "CONNECT_ERROR": {
       "ERROR_MESSAGE": "Bei der Verbindung zum Server ist ein Fehler aufgetreten. Bitte überprüfen Sie ihre Internetverbindung (Error-Code: 0502)"
+    },
+    "DEMO": {
+      "TITLE": "Achtung! SimpleDataTransfer ist im Demo-Modus!",
+      "CONTENT": "SimpleDataTransfer ist im Demo Modus. Das heißt, dass Sie diese Applikation nur zum testen nutzen sollten.  Verwenden Sie keine Persönlichen Daten zum testen. Ich übernehme keine Haftung, falls Ihre Daten in die falschen Hände geraten sollten!",
+      "OK_BUTTON": "Ich habe die Risiken verstanden und möchte fortfahren!"
     }
   },
   "OK_BUTTON": "Verstanden"
