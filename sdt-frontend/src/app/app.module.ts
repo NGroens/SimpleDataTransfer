@@ -64,7 +64,8 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { FooterComponent } from './core/footer/footer.component';
 import { AppConfig } from './core/config/app.config';
 import { SocketIoModule } from 'ngx-socket-io';
-import { SocketOne } from './SocketOne';
+import { Websocket } from './Websocket';
+import { DemoModeComponent } from './shared/components/demo-mode/demo-mode.component';
 
 
 // AoT requires an exported function for factories
@@ -86,7 +87,8 @@ export function initializeSocket(appConfig: AppConfig, ) {
     AppComponent,
     ModalComponent,
     ConnectErrorComponent,
-    FooterComponent
+    FooterComponent,
+    DemoModeComponent
   ],
   imports: [
     BrowserModule,
@@ -172,7 +174,7 @@ export function initializeSocket(appConfig: AppConfig, ) {
       useFactory: initializeApp,
       deps: [AppConfig], multi: true
     },
-    SocketOne
+    Websocket
 
   ],
   bootstrap: [AppComponent],

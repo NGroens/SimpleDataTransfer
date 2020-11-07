@@ -1,0 +1,25 @@
+[log]
+level = "ERROR"
+
+[providers]
+[providers.docker]
+exposedByDefault = false
+endpoint = "unix:///var/run/docker.sock"
+network = "web"
+[providers.file]
+filename = "/etc/traefik/dynamic.yml"
+
+[api]
+dashboard = true
+
+[entryPoints]
+[entryPoints.web]
+address = ":80"
+[entryPoints.web-secure]
+address = ":443"
+
+[certificatesResolvers]
+[certificatesResolvers.default.acme]
+email = "letsencrypt@mrcodingmen.de" # Enter your email
+storage = "/etc/traefik/ACME/acme.json"
+[certificatesResolvers.default.acme.tlsChallenge]

@@ -2,10 +2,8 @@ version: '2'
 services:
   mongodb:
     image: 'docker.io/bitnami/mongodb:4.4-debian-10'
-    ports:
-      - "27017:27017"
     environment:
-      - MONGODB_DATABASE=sdt-dev
+      - MONGODB_DATABASE=sdt
     volumes:
       - 'mongodb_data:/bitnami/mongodb'
   redis:
@@ -13,8 +11,6 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
-    ports:
-      - '6379:6379'
     volumes:
       - 'redis_data:/bitnami/redis/data'
   minio:
@@ -26,6 +22,38 @@ services:
       - '9000:9000'
     volumes:
       - 'minio_data:/data'
+  traefik:
+    image: traefik:2.3
+    container_name: traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/docker/traefik:/etc/traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`sdf-manage.mycoding.systems`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      - "traefik.http.routers.traefik.entrypoints=web-secure"
+      - "traefik.http.routers.traefik.tls.certresolver=default"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.middlewares=auth@docker"
+      - "traefik.http.middlewares.auth.basicauth.users=nils:$$2y$$05$$/ErdAcfM7TjEqZU5E0wM2O1Zk1CSpOJGGtiW9GQjpyMihpZQTTEyO" # Siehe Anleitung
+    networks:
+      - traefik_proxy
+      - default
+    ports:
+      - "80:8880"
+      - "443:8443"
+      - "8080:88080
+    restart: always
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge    
+    
 volumes:
   mongodb_data:
     driver: local

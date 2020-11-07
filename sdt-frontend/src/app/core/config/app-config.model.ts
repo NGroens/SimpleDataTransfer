@@ -3,6 +3,7 @@ export interface IAppConfig {
     name: string;
     socketIOEndpoint: string;
     apiEndpoint: string;
+    demo: boolean
   };
   header: {
     appName: string;

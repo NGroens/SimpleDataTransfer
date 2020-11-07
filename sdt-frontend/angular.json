@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "sdt-frontend"
+  "defaultProject": "sdt-frontend",
+  "cli": {
+    "analytics": false
+  }
 }

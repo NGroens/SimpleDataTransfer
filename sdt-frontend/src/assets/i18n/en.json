@@ -98,6 +98,11 @@
     },
     "CONNECT_ERROR": {
       "ERROR_MESSAGE": "An error occurred while connecting to the server. Please check your internet connection (Error-Code: 0502)"
+    },
+    "DEMO": {
+      "TITLE": "Warning! SimpleDataTransfer is in demo mode!",
+      "CONTENT": "SimpleDataTransfer is in demo mode. This means that you should only use this application for testing purposes.  Do not use personal data for testing. I do not take any liability if your data should fall into the wrong hands!",
+      "OK_BUTTON": "I have fully understood the risks and want to continue!"
     }
   },
   "OK_BUTTON": "Got it"
