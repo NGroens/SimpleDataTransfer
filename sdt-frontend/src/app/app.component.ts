@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ColorSchemeService } from './core/services/color-scheme.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Title } from '@angular/platform-browser';
+import { AppConfig } from './core/config/app.config';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent implements OnInit{
     public translate: TranslateService,
     public colorSchemeService: ColorSchemeService,
     public cookieService: CookieService,
+    public titleService: Title
 
   ) {
     // Load Color Scheme
@@ -22,6 +25,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    console.log("hey");
+    this.titleService.setTitle(AppConfig.settings.header.appName);
     this.translate.addLangs(['de', 'en']);
     this.translate.setDefaultLang('de');
     this.translate.use('de');
@@ -36,6 +41,7 @@ export class AppComponent implements OnInit{
 
     this.translate.use(this.cookieService.get('lang'));
     this.usersLanguage = this.cookieService.get('lang');
+
 
   }
 
