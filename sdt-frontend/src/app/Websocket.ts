@@ -3,11 +3,9 @@ import { Socket } from 'ngx-socket-io';
 import { AppConfig } from './core/config/app.config';
 
 @Injectable()
-export class SocketOne extends Socket {
-// TODO rename SocketOne to Websocket
+export class Websocket extends Socket {
   constructor() {
     super({ url: AppConfig.settings.env.socketIOEndpoint, options: {} });
   }
 
 }
- 
