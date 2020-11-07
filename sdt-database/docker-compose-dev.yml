@@ -27,10 +27,6 @@ services:
       - '9000:9000'
     volumes:
       - 'minio_data:/data'
-  socketio_test_client:
-    image: 'amritb/socketio-client-tool:latest'
-    ports:
-      - '8089:8080'
 volumes:
   mongodb_data:
     driver: local

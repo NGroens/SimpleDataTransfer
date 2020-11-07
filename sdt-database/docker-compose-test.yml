@@ -6,7 +6,7 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
-      - '6379:6379'     
+      - '6379:6379'
     volumes:
       - 'redis_data:/bitnami/redis/data'
   mongodb:
@@ -14,7 +14,7 @@ services:
     environment:
       - MONGODB_DATABASE=sdt
     ports:
-      - "27017:27017"      
+      - "27017:27017"
     volumes:
       - 'mongodb_data:/bitnami/mongodb'
   minio:
@@ -30,10 +30,9 @@ services:
   sdf_server:
     image: 'docker.io/groens/sdf-server'
     depends_on:
-      - "redis"   
-      - "mongodb"               
-      - "minio"               
-            
+      - "redis"
+      - "mongodb"
+      - "minio"
     environment:
       - MONGODB_HOST=mongodb
       - MONGODB_PORT=27017
@@ -47,7 +46,7 @@ services:
 #      - REDIS_PASSWORD=redispw
       - SECURITY_SECRET=MY_SECURITY_SECRET
       - SECURITY_EXPIRES_IN=30d
-      - S3_END_POINT=http://minio:9000
+      - S3_END_POINT=http://192.168.17.33:9000
       - S3_ACCESS_KEY=MY_ACCESS_KEY
       - S3_SECRET_KEY=MY_SECRET_KEY
       - S3_FORCE_PATH_STYLE=true
@@ -57,8 +56,19 @@ services:
       - LOCAL_END_POINT_URL=download
       - LOCAL_DOMAIN=http://localhost:8080
     ports:
-      - '3000:8080'      
-     
+      - '8080:3000'
+  sdf_frontend:
+    image: 'groens/sdt-frontend'
+    environment:
+      - SOCKETIO_ENDPOINT=http://localhost:8080
+      - API_ENDPOINT=http://localhost:8080/api
+      - DEMO=true
+      - APP_NAME=SimpleDataTransfer
+      - COPYRIGHT_STRING=&copy; 2020%year% <a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank'> NGroens</a> - Dev-Build
+      - SHOW_POWERED_BY=true
+      - SHOW_VERSION=true
+    ports:
+      - '80:80'
 volumes:
   mongodb_data:
     driver: local
