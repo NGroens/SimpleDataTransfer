@@ -93,6 +93,7 @@
           }
         }
       },
+      "ENTER_CODE": "Bitte geben Sie den Code an, den Sie erhalten haben.",
       "MESSAGES": {
         "CHECK_ENTERED_CODE": "Der Code wird geprüft...",
         "CODE_NOT_VALID": "Der Code ist nicht gültig oder der Empfänger ist nicht online. Versuchen Sie einen neuen.",
