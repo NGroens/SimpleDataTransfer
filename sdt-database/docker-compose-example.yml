@@ -1,0 +1,169 @@
+version: '2'
+services:
+  redis:
+    image: 'docker.io/bitnami/redis:6.0-debian-10'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    volumes:
+      - 'redis_data:/bitnami/redis/data'
+    networks:
+      - web
+      - default
+  mongodb:
+    container_name: mongodb
+    image: 'docker.io/bitnami/mongodb:4.4-debian-10'
+    environment:
+      - MONGODB_DATABASE=sdt
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+    networks:
+      - web
+      - default
+  minio:
+    image: 'minio/minio'
+    environment:
+      - MINIO_ACCESS_KEY=k3c5y5tvhWb5mHVX2Lyn2fXnqqL8cqfjbASxMuYAHH9nTuKa6kV5tnsgAuXnCh3caWL5sYDcMBW34bK
+      - MINIO_SECRET_KEY=hZsKg8oDigWFM3232EHz6HNWL949mvRs9dN8osJUhs2bJdooTpJnErzhr2v4XChR4Cdac4rgGKkoQsE
+    command: 'server /data'
+    volumes:
+      - 'minio_data:/data'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.minio-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.minio-http.rule=Host(`s3.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.minio-http.middlewares=minio-https@docker"
+      - "traefik.http.routers.minio.rule=Host(`s3.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.minio.tls=true"
+      - "traefik.http.routers.minio.tls.certresolver=default"
+      - "traefik.http.routers.minio.middlewares=secHeaders@file"
+      - "traefik.http.services.minio.loadbalancer.server.port=9000"
+    networks:
+      - web
+      - default
+  sdt_server:
+    image: 'docker.io/groens/sdt-server:0.9.0'
+    depends_on:
+      - "redis"
+      - "mongodb"
+      - "minio"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+#      - MONGODB_USERNAME=sdf
+#      - MONGODB_PASSWORD=sdfpw
+      - MONGODB_DATABASE=sdf
+      - EXPRESS_PORT=3000
+      - REDIS_HOST=redis
+#      - REDIS_PORT=6397
+#      - REDIS_USERNAME=redis
+#      - REDIS_PASSWORD=redispw
+      - SECURITY_SECRET=YoXX3K6yEZwaDqqkJACTzTTmYzkN4KuvdSSiP2fW957UqgPaSHZrNYQN9iApK2LRfasajZCAYWo8Kq3tSjMKB2Mx7eCUaT53xgxHkTWjn5h
+      - SECURITY_EXPIRES_IN=30d
+      - S3_END_POINT=https://s3.sdt.mycoding.systems
+      - S3_ACCESS_KEY=k3c5y5tvhWb5mHVX2Lyn2fXnqqL8cqfjbASxMuYAHH9nTuKa6kV5tnsgAuXnCh3caWL5sYDcMBW34bK
+      - S3_SECRET_KEY=hZsKg8oDigWFM3232EHz6HNWL949mvRs9dN8osJUhs2bJdooTpJnErzhr2v4XChR4Cdac4rgGKkoQsE
+      - S3_FORCE_PATH_STYLE=true
+      - S3_SIGNATURE_VERSION=v4
+      - S3_DEFAULT_BUCKET=sdf
+      - LOCAL_DIR=public/upload/sdf
+      - LOCAL_END_POINT_URL=download
+      - LOCAL_DOMAIN=https://api.sdt.mycoding.systems
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.sdtServer-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.sdtServer-http.entrypoints=web"
+      - "traefik.http.routers.sdtServer-http.rule=Host(`api.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.sdtServer-http.middlewares=sdtServer-https@docker"
+      - "traefik.http.routers.sdtServer.entrypoints=web-secure"
+      - "traefik.http.routers.sdtServer.rule=Host(`api.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.sdtServer.tls=true"
+      - "traefik.http.routers.sdtServer.tls.certresolver=default"
+      - "traefik.http.routers.sdtServer.middlewares=secHeaders@file"
+      - "traefik.http.services.sdtServer.loadbalancer.server.port=3000"
+    networks:
+      - web
+      - default
+  sdt_frontend:
+    image: 'docker.io/groens/sdt-frontend:0.9.0'
+    environment:
+      - SOCKETIO_ENDPOINT=https://api.sdt.mycoding.systems
+      - API_ENDPOINT=https://api.sdt.mycoding.systems/api
+      - DEMO=true
+      - APP_NAME=SimpleDataTransfer
+      - COPYRIGHT_STRING=&copy; 2020%year% <a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank'> NGroens</a> - Dev-Build
+      - SHOW_POWERED_BY=true
+      - SHOW_VERSION=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.sdtFrontend-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.sdtFrontend-http.entrypoints=web"
+      - "traefik.http.routers.sdtFrontend-http.rule=Host(`sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.sdtFrontend-http.middlewares=sdtFrontend-https@docker"
+      - "traefik.http.routers.sdtFrontend.entrypoints=web-secure"
+      - "traefik.http.routers.sdtFrontend.rule=Host(`sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.sdtFrontend.tls=true"
+      - "traefik.http.routers.sdtFrontend.tls.certresolver=default"
+      - "traefik.http.routers.sdtFrontend.middlewares=secHeaders@file"
+      - "traefik.http.services.sdtFrontend.loadbalancer.server.port=80"
+    networks:
+      - web
+      - default
+  traefik:
+    image: traefik:2.3
+    container_name: traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/config:/etc/traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.sdt.mycoding.systems`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      - "traefik.http.routers.traefik.entrypoints=web-secure"
+      - "traefik.http.routers.traefik.tls.certresolver=default"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.middlewares=auth@docker"
+      - "traefik.http.middlewares.auth.basicauth.users=nils:$$2y$$05$$1cFbE2IZTVPO5/vVohspCOaJ2ne8iQuYqP47Ad3f1zDCNBLe9DE4m" # Siehe Anleitung
+    networks:
+      - web
+      - default
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/docker/portainer:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.portainer-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.portainer-http.rule=Host(`portainer.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.portainer-http.middlewares=portainer-https@docker"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.sdt.mycoding.systems`)" #Domain anpassen
+      - "traefik.http.routers.portainer.tls=true"
+      - "traefik.http.routers.portainer.tls.certresolver=default"
+      - "traefik.http.routers.portainer.middlewares=secHeaders@file"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+    restart: always
+    networks:
+      - web
+      - default
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+  minio_data:
+    driver: local
+networks:
+  web:
+    external:
+      name: web
+  default:
+    driver: bridge
