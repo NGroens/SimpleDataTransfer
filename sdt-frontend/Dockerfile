@@ -76,7 +76,23 @@ RUN echo "for configFileName in /usr/share/nginx/html/assets/config/config*.json
             do \
               envsubst '\$SOCKETIO_ENDPOINT \$API_ENDPOINT \$DEMO \$APP_NAME \$COPYRIGHT_STRING \$SHOW_POWERED_BY \$SHOW_VERSION ' < \$configFileName > config.tmp ;\
               mv config.tmp \${configFileName} ;\
-            done \
-            && nginx -g 'daemon off;'" > run.sh
+            done ;\
+            for manifestFileName in /usr/share/nginx/html/manifest.webmanifest ;\
+            do \
+              envsubst '\$SOCKETIO_ENDPOINT \$API_ENDPOINT \$DEMO \$APP_NAME \$COPYRIGHT_STRING \$SHOW_POWERED_BY \$SHOW_VERSION ' < \$manifestFileName > manifestfile.tmp ;\
+              mv manifestfile.tmp \${manifestFileName} ;\
+            done && nginx -g 'daemon off;'" > run.sh
+#RUN echo "for configFileName in /usr/share/nginx/html/assets/config/config*.json ;\
+#            do \
+#              envsubst '\$SOCKETIO_ENDPOINT \$API_ENDPOINT \$DEMO \$APP_NAME \$COPYRIGHT_STRING \$SHOW_POWERED_BY \$SHOW_VERSION ' < \$configFileName > config.tmp ;\
+#              mv config.tmp \${configFileName} ;\
+#            done " > run.sh
+#
+#RUN echo -e "for configFileName in /usr/share/nginx/html/*.webmanifest ;\
+#            do \
+#              envsubst '\$SOCKETIO_ENDPOINT \$API_ENDPOINT \$DEMO \$APP_NAME \$COPYRIGHT_STRING \$SHOW_POWERED_BY \$SHOW_VERSION ' < \$configFileName > config.tmp ;\
+#              mv config.tmp \${configFileName} ;\
+#            done \
+#            && nginx -g 'daemon off;' " > run.sh
 
 ENTRYPOINT ["sh", "run.sh"]

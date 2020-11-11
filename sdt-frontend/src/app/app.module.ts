@@ -66,6 +66,8 @@ import { AppConfig } from './core/config/app.config';
 import { SocketIoModule } from 'ngx-socket-io';
 import { Websocket } from './Websocket';
 import { DemoModeComponent } from './shared/components/demo-mode/demo-mode.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 // AoT requires an exported function for factories
@@ -156,6 +158,7 @@ export function initializeSocket(appConfig: AppConfig, ) {
     PortalModule,
     ScrollingModule,
     MatToolbarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
 
 
   ],
