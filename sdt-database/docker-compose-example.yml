@@ -42,7 +42,7 @@ services:
       - web
       - default
   sdt_server:
-    image: 'docker.io/groens/sdt-server:0.9.1'
+    image: 'docker.io/groens/sdt-server:0.9.3'
     depends_on:
       - "redis"
       - "mongodb"
@@ -85,7 +85,7 @@ services:
       - web
       - default
   sdt_frontend:
-    image: 'docker.io/groens/sdt-frontend:0.9.1'
+    image: 'docker.io/groens/sdt-frontend:0.9.3'
     environment:
       - SOCKETIO_ENDPOINT=https://api.sdt.example.com #Change domain name
       - API_ENDPOINT=https://api.sdt.example.com/api #Change domain name
