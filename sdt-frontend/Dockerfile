@@ -58,7 +58,7 @@ WORKDIR /usr/angular-workdir
 RUN npm install
 
 COPY ./ /usr/angular-workdir
-RUN npm run build --prod
+RUN npm run build
 
 FROM nginx:1.15.8-alpine
 
