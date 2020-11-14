@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { WebsocketService } from '../../../core/services/websocket.service';
 import { AppComponent } from '../../../app.component';
 import { ColorSchemeService } from '../../../core/services/color-scheme.service';
@@ -13,9 +13,10 @@ import { DemoModeComponent } from '../../../shared/components/demo-mode/demo-mod
   templateUrl: './public.component.html',
   styleUrls: ['./public.component.scss']
 })
-export class PublicComponent implements OnInit {
+export class PublicComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
+
   versionParams = {
     version: environment.version + '-' + environment.version_state
   };
@@ -26,7 +27,6 @@ export class PublicComponent implements OnInit {
     public app: AppComponent,
     public colorSchemeService: ColorSchemeService,
     public dialog: MatDialog,
-
   ) {
   }
 
@@ -39,6 +39,10 @@ export class PublicComponent implements OnInit {
         height: '80%'
       });
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.onResize();
   }
 
 
@@ -65,5 +69,13 @@ export class PublicComponent implements OnInit {
   close(reason: string) {
     this.sidenav.close();
   }
+
+  onResize() {
+    console.log(document.getElementById('footer').getBoundingClientRect().height);
+    console.log(window.screen.height);
+    console.log(window.screen.height - document.getElementById('footer').getBoundingClientRect().height + 'px');
+    document.getElementById('content').style.height = window.screen.height - document.getElementById('footer').getBoundingClientRect().height - document.getElementById('navbar').getBoundingClientRect().height + 'px';
+  }
+
 
 }
