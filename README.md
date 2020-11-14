@@ -11,7 +11,7 @@
     <a href="https://github.com/NGroens/SimpleDataTransfer/tree/master/docs"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://sdf.mycoding.systems/public">View Demo</a>
+    <a href="https://sdt.mycoding.systems/public">View Demo</a>
     ·
     <a href="https://github.com/NGroens/SimpleDataTransfer/issues">Report Bug</a>
     ·
@@ -61,6 +61,17 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 * Docker - [Install Docker](https://docs.docker.com/get-docker/)
 
+## Installation
+The easiest way to use SimpleDataTransfer is to use [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/):
+1. Download the docker-compose template:
+    ```sh
+   curl https://raw.githubusercontent.com/NGroens/SimpleDataTransfer/master/sdt-database/docker-compose-example.yml --output docker-compose.yml
+    ```
+2. Replace your domain name in the docker-compose.yml and follow the instructions at the end of each line.
+3. Start all containers with the following command:
+    ```sh
+    docker-compose up -d
+    ```
 ## Installation for development purposes
 
 1. Clone the repo
