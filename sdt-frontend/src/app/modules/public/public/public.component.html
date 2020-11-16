@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-  <span class="app-name">{{getAppConfig()?.settings.header.appName}}</span>
+<mat-toolbar color="primary" id="navbar">
+  <span class="app-name" routerLink="/public">{{getAppConfig()?.settings.header.appName}}</span>
   <span class="menu-icon"><mat-icon matRipple class="pointer" (click)="sidenav.toggle()">menu</mat-icon></span>
   <span class="fill-remaining-space"></span>
   <mat-form-field>
@@ -48,16 +48,16 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content  id="content"  (window:resize)="onResize()">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<mat-card class="footer">
+<mat-card class="footer" id="footer">
   <mat-card-content style="display: flex; justify-content: center; align-content: center">
-    <span class="copyright" [innerHTML]="getFormattedCopyrightText()"> </span> <span
-    *ngIf="getAppConfig()?.settings.footer.showPoweredBy"> | Powered by <a
-    href="http://github.mycoding.systems/SimpleDataTransfer" class="link-color "
-    target="_blank"> SimpleDataTransfer</a></span>
+    <span class="copyright" [innerHTML]="getFormattedCopyrightText()"> </span> <a   href="http://github.mycoding.systems/SimpleDataTransfer" class="link-color "
+                                                                                    target="_blank"
+                                                                                    *ngIf="getAppConfig()?.settings.footer.showPoweredBy"> | Powered by <a
+  > SimpleDataTransfer</a></a>
     <span class="version" *ngIf="getAppConfig()?.settings.footer.showVersion"> | <mat-icon class="icon-spin">settings</mat-icon>
       {{'FOOTER.VERSION' | translate:versionParams}}</span>
   </mat-card-content>
