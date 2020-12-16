@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../../shared/components/modal/modal.component';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -42,7 +43,8 @@ export class ReceiveComponent implements OnInit, OnDestroy, AfterViewInit {
     private changeDetectorRefs: ChangeDetectorRef,
     public dialog: MatDialog,
     private clipboard: Clipboard,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    public router: Router
   ) {
     this.dataSource = new MatTableDataSource<DataElement>(ELEMENT_DATA);
 
