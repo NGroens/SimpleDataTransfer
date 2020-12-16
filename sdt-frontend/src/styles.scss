@@ -12,7 +12,7 @@ body {
 }
 
 @media(max-width: 425px) {
-  .mat-toolbar .mat-form-field, a {
+  .mat-toolbar .mat-form-field, .mat-toolbar .mat-form-field a {
     display: none !important;
   }
   .mat-toolbar {
@@ -3183,33 +3183,9 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end, body.swal2-no-backdrop .sw
     transform: rotate(360deg);
   }
 }
-.footer {
-  position: fixed!important;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
 
-  span {
-    margin-right: 0.3rem;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    a{
-      margin-left: 0.3rem;
-      margin-right: 0.3rem;
-    }
-  }
-  .version{
-    mat-icon{
-      margin-left: 0.3rem;
-      margin-right: 0.3rem;
-      width: 1rem;
-      height: 1rem;
-      font-size: 1rem;
-    }
-  }
-.project-developer{
-  margin-left: 0.3rem;
-}
-}
 
+.back {
+  display: flex;
+  align-items: center;
+}
