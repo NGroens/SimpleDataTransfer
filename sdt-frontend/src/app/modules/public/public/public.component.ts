@@ -7,6 +7,7 @@ import { environment } from '../../../../environments/environment';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog } from '@angular/material/dialog';
 import { DemoModeComponent } from '../../../shared/components/demo-mode/demo-mode.component';
+import { ResponsiveService } from '../../../core/services/responsive.service';
 
 @Component({
   selector: 'app-public',
@@ -27,6 +28,7 @@ export class PublicComponent implements OnInit, AfterViewInit {
     public app: AppComponent,
     public colorSchemeService: ColorSchemeService,
     public dialog: MatDialog,
+    public responsiveService: ResponsiveService
   ) {
   }
 
@@ -35,14 +37,19 @@ export class PublicComponent implements OnInit, AfterViewInit {
 
     if (AppConfig.settings.env.demo) {
       console.log('Application started in demo mode');
-      const dialogRef = this.dialog.open(DemoModeComponent, {
-        height: '80%'
-      });
+
+      setTimeout(() => {
+        const dialogRef = this.dialog.open(DemoModeComponent, {
+          height: '80%'
+        });
+      }, 300);
+
     }
+    // this.responsiveService.update();
   }
 
   ngAfterViewInit(): void {
-    this.onResize();
+    // this.responsiveService.update();
   }
 
 
@@ -70,9 +77,5 @@ export class PublicComponent implements OnInit, AfterViewInit {
     this.sidenav.close();
   }
 
-  onResize() {
-    // tslint:disable-next-line:max-line-length
-    document.getElementById('content').style.height = window.screen.height - document.getElementById('footer').getBoundingClientRect().height - document.getElementById('navbar').getBoundingClientRect().height + 'px';
-  }
 
 }
