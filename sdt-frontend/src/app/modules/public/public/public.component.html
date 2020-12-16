@@ -48,17 +48,25 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content  id="content"  (window:resize)="onResize()">
-    <router-outlet></router-outlet>
+  <mat-sidenav-content id="content" (window:resize)="this.responsiveService.update()">
+    <router-outlet (change)="this.responsiveService.update()"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <mat-card class="footer" id="footer">
-  <mat-card-content style="display: flex; justify-content: center; align-content: center">
-    <span class="copyright" [innerHTML]="getFormattedCopyrightText()"> </span> <a   href="http://github.mycoding.systems/SimpleDataTransfer" class="link-color "
-                                                                                    target="_blank"
-                                                                                    *ngIf="getAppConfig()?.settings.footer.showPoweredBy"> | Powered by <a
-  > SimpleDataTransfer</a></a>
-    <span class="version" *ngIf="getAppConfig()?.settings.footer.showVersion"> | <mat-icon class="icon-spin">settings</mat-icon>
-      {{'FOOTER.VERSION' | translate:versionParams}}</span>
+  <mat-card-content class="footer-content">
+    <div class="footer-text">
+      <span class="copyright" [innerHTML]="getFormattedCopyrightText()"> </span>
+    </div>
+    <div class="footer-text">
+      <span>
+        <a href="http://github.mycoding.systems/SimpleDataTransfer" class="link-color" target="_blank"
+           *ngIf="getAppConfig()?.settings.footer.showPoweredBy"> | Powered by SimpleDataTransfer</a>
+      </span>
+    </div>
+    <div class="footer-text">
+       <span class="version" *ngIf="getAppConfig()?.settings.footer.showVersion"> | <mat-icon
+         class="icon-spin">settings</mat-icon>
+         {{'FOOTER.VERSION' | translate:versionParams}}</span>
+    </div>
   </mat-card-content>
 </mat-card>
