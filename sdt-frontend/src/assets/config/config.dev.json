@@ -1,15 +1,15 @@
 {
   "env": {
     "name": "DEV",
-    "socketIOEndpoint": "http://localhost:8080",
-    "apiEndpoint": "http://localhost:8080/api",
+    "socketIOEndpoint": "https://api.sdt.mycoding.systems",
+    "apiEndpoint": "https://api.sdt.mycoding.systems/api",
     "demo": true
   },
   "header": {
     "appName": "SimpleDataTransfer"
   },
   "footer": {
-    "copyrightString": "&copy; 2020%year% <a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank'> NGroens</a> - Dev-Build ",
+    "copyrightString": "<a href='https://github.mycoding.systems' class='link-color project-developer' target='_blank'>&copy; 2020%year% NGroens - Dev-Build </a>",
     "showPoweredBy": true,
     "showVersion": true
   }
